@@ -33,6 +33,73 @@
 			 <view class="oneline">防范宣传</view>
 		 </view>
 		</view>
+		<!-- 下面图片文字列表部分 -->
+		<view class="list">
+		 <view class="firstlist">
+			 <view class="tupian">
+				 <image src="../../static/imgs/home_title.jpg"></image>
+			 </view>
+			<navigator>
+				 <view class="right">
+					<view class="top">
+						疫情防控，警惕！这个数字已经超过了500了！！！！
+					</view> 
+					<view class="down">
+						<text class="lft">天津市公安局</text> 
+						<text class="rit">2020-05-25</text>
+					</view> 
+				 </view>
+			</navigator>
+		 </view>
+		 <view class="firstlist">
+			 <view class="tupian">
+				 <image src="../../static/imgs/home_title.jpg"></image>
+			 </view>
+			<navigator>
+				 <view class="right">
+					<view class="top">
+						疫情防控，警惕！这个数字已经超过了500了！！！！
+					</view> 
+					<view class="down">
+						<text class="lft">天津市公安局</text> 
+						<text class="rit">2020-05-25</text>
+					</view> 
+				 </view>
+			</navigator>
+		 </view>
+		 <view class="firstlist">
+			 <view class="tupian">
+				 <image src="../../static/imgs/home_title.jpg"></image>
+			 </view>
+			<navigator>
+				 <view class="right">
+					<view class="top">
+						疫情防控，警惕！这个数字已经超过了500了！！！！
+					</view> 
+					<view class="down">
+						<text class="lft">天津市公安局</text> 
+						<text class="rit">2020-05-25</text>
+					</view> 
+				 </view>
+			</navigator>
+		 </view>
+		 <view class="firstlist">
+			 <view class="tupian">
+				 <image src="../../static/imgs/home_title.jpg"></image>
+			 </view>
+			<navigator>
+				 <view class="right">
+					<view class="top">
+						疫情防控，警惕！这个数字已经超过了500了！！！！
+					</view> 
+					<view class="down">
+						<text class="lft">天津市公安局</text> 
+						<text class="rit">2020-05-25</text>
+					</view> 
+				 </view>
+			</navigator>
+		 </view>
+		</view>
 	</view>
 </template>
 
@@ -64,10 +131,10 @@
 	.content{
 		background-color: #f4f9fa;
 		.images{
-		display: flex;
-		padding-top: 10rpx;
-		background-color: #f4f9fa;
-		navigator{
+		 display: flex;
+		 padding-top: 10rpx;
+		 background-color: #f4f9fa;
+		 navigator{
 			display: flex;
 			flex: 1;
 			justify-content: center;
@@ -76,6 +143,7 @@
 				height: 350rpx;
 				width: 350rpx;
 			}
+		  }
 		}
 	}
 	.fiveball{
@@ -110,5 +178,38 @@
 			color: #444444;
 		}
 	}
+	.list{
+		background-color: #f4f9fa;
+		padding: 0 5rpx ;
+		.firstlist{
+		background-color:write ;
+		display: flex;	
+		height: 200rpx;
+		margin-bottom: 20rpx;
+		.tupian{
+			flex: 1;
+			margin-right: 10rpx;
+			image{
+				width: 100%;
+				height: 100%;
+			}
+		}
+		navigator{
+				flex: 2;
+			.right{
+				height: 200rpx;
+				.down{
+					margin-left: 100rpx;
+					margin-top: 80rpx;
+					color:#888888;
+					.lft{
+						margin-right: 25rpx;
+					}
+				}
+			}	
+		}
+
 	}
+	}
+	
 </style>
