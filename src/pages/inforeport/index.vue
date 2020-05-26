@@ -1,6 +1,9 @@
 <template>
-  <view>
-      信息上报
+  <view class="inforeport">
+      <view class="words">
+         <text class="word">关键词</text> 
+         <text class="kong">涉恐</text>
+      </view>
   </view>
 </template>
 
@@ -10,6 +13,13 @@ export default {
 }
 </script>
 
-<style>
-
+<style lang="less" scoped>
+.words{
+  .word{
+    float: left;
+  }
+  .kong{
+    float:right;
+  }
+}
 </style>

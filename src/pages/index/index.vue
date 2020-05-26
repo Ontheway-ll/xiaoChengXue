@@ -6,25 +6,25 @@
 		<view class="content">
 			<view class="images">
 			 <!-- redirect页面跳转后无法在返回 -->
-			 <navigator url=""  hover-class="className">
+			 <navigator url="/pages/inforeport/index"  hover-class="className">
 			 <image src="../../static/imgs/home_sb_down.png" />
 			 </navigator>
 		 </view>
 		 <!-- 下面5个小球 -->
 		 <view class="fiveball">
-			<navigator url=""  hover-class="className">
+			<navigator url="/pages/inforeport/index"  hover-class="className">
 				<img src="../../static/imgs/home_sk_down.png" alt="">
 			</navigator>
-			<navigator url=""  hover-class="className">
+			<navigator url="/pages/inforeport/index"  hover-class="className">
 				<img src="../../static/imgs/home_sw_down.png" alt="">
 			</navigator>
-			<navigator url=""  hover-class="className">
+			<navigator url="/pages/inforeport/index"  hover-class="className">
 				<img src="../../static/imgs/home_xs_down.png" alt="">
 			</navigator>
-			<navigator url=""  hover-class="className">
+			<navigator url="/pages/inforeport/index"  hover-class="className">
 				<img src="../../static/imgs/home_za_down.png" alt="">
 			</navigator>
-			<navigator url=""  hover-class="className">
+			<navigator url="/pages/inforeport/index"  hover-class="className">
 				<img src="../../static/imgs/home_yh_down.png" alt="">
 			</navigator>
 		 </view>
@@ -182,7 +182,7 @@
 		background-color: #f4f9fa;
 		padding: 0 5rpx ;
 		.firstlist{
-		background-color:write ;
+		background-color: #ffffff ;
 		display: flex;	
 		height: 200rpx;
 		margin-bottom: 20rpx;
@@ -199,11 +199,11 @@
 			.right{
 				height: 200rpx;
 				.down{
-					margin-left: 100rpx;
+					margin-left: 40rpx;
 					margin-top: 80rpx;
 					color:#888888;
 					.lft{
-						margin-right: 25rpx;
+						margin-right: 20rpx;
 					}
 				}
 			}	
