@@ -1,6 +1,16 @@
 {
-	"pages": [ //pages数组中第一项表示应用启动页，参考：https://uniapp.dcloud.io/collocation/pages
-		{
+    "pages": [ //pages数组中第一项表示应用启动页,
+        {
+            "path": "pages/login/login",
+            "style": {}
+        }, {
+            "path": "pages/login/forget",
+            "style": {}
+        }, {
+            "path": "pages/login/register",
+            "style": {}
+        },
+        {
 			"path": "pages/index/index",
 			"style": {
 				"navigationBarTitleText": "公共信息采集"
@@ -35,14 +45,16 @@
 			"style": {
 				"navigationBarTitleText": "信息上报"
 			}
-		}
-	],
-	"globalStyle": {
-		"navigationBarTextStyle": "#fff",
-		"navigationBarTitleText": "",
-		"navigationBarBackgroundColor": "#757575"
-	},
-	"tabBar": {
+		} 
+    ],
+    "globalStyle": {
+    	"navigationBarTextStyle": "#fff",
+    	"navigationBarTitleText": "",
+    	"navigationBarBackgroundColor": "#757575"
+    	// "backgroundColor": "#F8F8F8",
+    	// "navigationStyle": "custom" 
+    },
+    "tabBar": {
 		"color": "#666666",
 		"selectedColor": "004cd3",
 		"backgroundColor": "#e2e2e2",
@@ -81,5 +93,4 @@
 			}
 		]
 	}
-	
 }
