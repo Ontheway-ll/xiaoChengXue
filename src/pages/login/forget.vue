@@ -4,7 +4,7 @@
 		<view class="content">
 			<!-- 主体 -->
 			<view class="main">
-				<view class="tips">若你忘记了密码，可在此重置新密码。</view>
+				<view class="tips">忘记密码，可在此重置新密码。</view>
 				<wInput
 					v-model="phoneData"
 					type="text"

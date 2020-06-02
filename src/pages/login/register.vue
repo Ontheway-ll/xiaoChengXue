@@ -4,7 +4,9 @@
 		<view class="content">
 			<!-- 头部logo -->
 			<view class="header">
-				<image :src="logoImage"></image>
+				<!-- <image :src="logoImage"></image> -->
+				<view class="hi">Hi，</view>
+			    <view class="people">人力情报欢迎您</view>
 			</view>
 			<!-- 主体 -->
 			<view class="main">
@@ -42,13 +44,15 @@
 			
 			<!-- 底部信息 -->
 			<view class="footer">
-				<text 
+				<text class="cuIcon"></text> 
+				<!-- <text 
 					@tap="isShowAgree" 
 					class="cuIcon"
 					:class="showAgree?'cuIcon-radiobox':'cuIcon-round'"
-				>同意</text>
+				>同意</text>  -->
 				<!-- 协议地址 -->
-				<navigator url="" open-type="navigate">《协议》</navigator>
+				<!-- open-type="navigate"等价于API的　wx.navigateTo　而wx.navigateTo的url是需要跳转的应用内非 tabBar 的页面的路径 -->
+				<!-- <navigator url="" open-type="navigate">《协议》</navigator> -->
 			</view>
 		</view>
 	</view>
@@ -67,7 +71,7 @@
 				phoneData:'', // 用户/电话
 				passData:'', //密码
 				verCode:"", //验证码
-				showAgree:true, //协议是否选择
+				// showAgree:true, //协议是否选择
 				isRotate: false, //是否加载旋转
 			}
 		},
@@ -79,10 +83,10 @@
 			_this= this;
 		},
 		methods: {
-			isShowAgree(){
-				//是否选择协议
-				_this.showAgree = !_this.showAgree;
-			},
+			// isShowAgree(){
+			// 	//是否选择协议
+			// 	_this.showAgree = !_this.showAgree;
+			// },
 			getVerCode(){
 				//获取验证码
 				if (_this.phoneData.length != 11) {
@@ -116,14 +120,14 @@
 					//判断是否加载中，避免重复点击请求
 					return false;
 				}
-				if (this.showAgree == false) {
-				    uni.showToast({
-				        icon: 'none',
-						position: 'bottom',
-				        title: '请先同意《协议》'
-				    });
-				    return false;
-				}
+				// if (this.showAgree == false) {
+				//     uni.showToast({
+				//         icon: 'none',
+				// 		position: 'bottom',
+				//         title: '请先同意《协议》'
+				//     });
+				//     return false;
+				// }
 				if (this.phoneData.length !=11) {
 				    uni.showToast({
 				        icon: 'none',
@@ -152,7 +156,7 @@
 				_this.isRotate=true
 				setTimeout(function(){
 					_this.isRotate=false
-				},3000)
+				},1000)
 		    }
 		}
 	}

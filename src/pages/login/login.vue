@@ -2,7 +2,10 @@
 	<view class="login">
 		<view class="content">
 			<!-- 头部logo -->
-		
+	  	  <view class="header">
+				<view class="hi">Hi，</view>
+				<view class="people">人力情报欢迎您</view>
+		  </view>
 
 			<!-- <view class="header">
 				<image :src="logoImage"></image>
@@ -34,12 +37,12 @@
 				<view class="login_icon">
 					<view class="cuIcon-weixin" @tap="login_weixin"></view>
 				</view>
-				<view class="login_icon">
+				<!-- <view class="login_icon">
 					<view class="cuIcon-weibo" @tap="login_weibo"></view>
-				</view>
-				<view class="login_icon">
+				</view> -->
+				<!-- <view class="login_icon">
 					<view class="cuIcon-github" @tap="login_github"></view>
-				</view>
+				</view> -->
 			</view>
 			
 			<!-- 底部信息 -->
@@ -73,24 +76,26 @@
 		},
 		mounted() {
 			_this= this;
-			//this.isLogin();
+			this.isLogin();
 		},
 		methods: {
 			isLogin(){
-				//判断缓存中是否登录过，直接登录
-				// try {
-				// 	const value = uni.getStorageSync('setUserData');
-				// 	if (value) {
-				// 		//有登录信息
-				// 		console.log("已登录用户：",value);
-				// 		_this.$store.dispatch("setUserData",value); //存入状态
-				// 		uni.reLaunch({
-				// 			url: '../../../pages/index',
-				// 		});
-				// 	}
-				// } catch (e) {
-				// 	// error
-				// }
+				// 判断缓存中是否登录过，直接登录
+				try {
+					const value = uni.getStorageSync('setUserData');
+					if (value) {
+						//有登录信息
+						console.log("已登录用户：",value);
+						// 存入值
+						_this.$store.dispatch("setUserData",value); //存入状态，
+						// 关闭所有页面，打开到应用内的某个页面 
+						uni.reLaunch({
+							url: '../../../pages/index',
+						});
+					}
+				} catch (e) {
+					// error
+				}
 			},
 		    startLogin(){
 				//登录
@@ -140,53 +145,53 @@
 				// 		} catch (e) {
 				// 			// error
 				// 		}
-				// 		uni.showToast({
-				// 			icon: 'success',
-				// 			position: 'bottom',
-				// 			title: '登录成功'
-				// 		});
-				// 		uni.reLaunch({
-				// 			url: '../../../pages/index',
-				// 		});
+						uni.showToast({
+							icon: 'success',
+							position: 'bottom',
+							title: '登录成功'
+						});
+						uni.reLaunch({
+							url: '../../../pages/index',
+						});
 				// 	}else{
 				// 		_this.passData=""
 				// 		uni.showToast({
 				// 			icon: 'error',
 				// 			position: 'bottom',
-				// 			title: '账号或密码错误，账号admin密码admin'
+				// 			title: '账号或密码错误，'
 				// 		});
 				// 	}
-				// 	uni.hideLoading();
+					// uni.hideLoading();
 				// }).catch(err => {
 				// 	uni.hideLoading();
 				// })
 				
-		    }
-			,
-			login_weixin() {
+		    },
+			
+			  login_weixin() {
 				//微信登录
-				uni.showToast({
+				 uni.showToast({
 					icon: 'none',
 					position: 'bottom',
-					title: '...'
-				});
-			},
-			login_weibo() {
-				//微博登录
-				uni.showToast({
-					icon: 'none',
-					position: 'bottom',
-					title: '...'
-				});
-			},
-			login_github() {
-				//github登录
-				uni.showToast({
-					icon: 'none',
-					position: 'bottom',
-					title: '...'
-				});
-			}
+					title: '。。。'
+				 });
+			  }
+				// login_weibo() {
+				// 	//微博登录
+				// 	uni.showToast({
+				// 		icon: 'none',
+				// 		position: 'bottom',
+				// 		title: '...'
+				// 	});
+		        //    } 
+				// login_github() {
+				// 	//github登录
+				// 	uni.showToast({
+				// 		icon: 'none',
+				// 		position: 'bottom',
+				// 		title: '...'
+				// 	});
+			    // }
 		}
 	}
 </script>
