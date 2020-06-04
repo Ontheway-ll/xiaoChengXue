@@ -47,7 +47,7 @@
 <style >
 
 	body{
-		background: #FFFFFF !important;
+		background: #FFFFFF ;
 	}
 	
 </style>

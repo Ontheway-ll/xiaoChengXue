@@ -1,16 +1,6 @@
 {
     "pages": [ //pages数组中第一项表示应用启动页,
         {
-            "path": "pages/login/login",
-            "style": {}
-        }, {
-            "path": "pages/login/forget",
-            "style": {}
-        }, {
-            "path": "pages/login/register",
-            "style": {}
-        },
-        {
 			"path": "pages/index/index",
 			"style": {
 				"navigationBarTitleText": "公共信息采集"
@@ -45,7 +35,37 @@
 			"style": {
 				"navigationBarTitleText": "信息上报"
 			}
-		} 
+		},
+		{
+            "path": "pages/text/index",
+            "style": {
+				"navigationBarTitleText": "测试登录"
+			}
+		},
+		{
+            "path": "pages/indexdetail/index",
+            "style": {
+				
+			}
+		},
+		{
+            "path": "pages/historyreport/index",
+            "style": {
+				"navigationBarTitleText": "历史上报"
+			}
+		},
+		{
+            "path": "pages/about/index",
+            "style": {
+				"navigationBarTitleText": "关于共助津门"
+			}
+		},
+		{
+            "path": "pages/questions/index",
+            "style": {
+				"navigationBarTitleText": "问题反馈"
+			}
+        }
     ],
     "globalStyle": {
     	"navigationBarTextStyle": "#fff",

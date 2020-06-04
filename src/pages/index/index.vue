@@ -39,7 +39,7 @@
 			 <view class="tupian">
 				 <image src="../../static/imgs/home_title.jpg"></image>
 			 </view>
-			<navigator>
+			<navigator url="/pages/indexdetail/index">
 				 <view class="right">
 					<view class="top">
 						疫情防控，警惕！这个数字已经超过了500了！！！！
@@ -55,7 +55,7 @@
 			 <view class="tupian">
 				 <image src="../../static/imgs/home_title.jpg"></image>
 			 </view>
-			<navigator>
+			<navigator url="/pages/indexdetail/index">
 				 <view class="right">
 					<view class="top">
 						疫情防控，警惕！这个数字已经超过了500了！！！！
