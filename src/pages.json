@@ -1,5 +1,13 @@
 {
+<<<<<<< HEAD
     "pages": [
+=======
+	"pages": [ //pages数组中第一项表示应用启动页,
+		{
+            "path": "pages/text/index",
+            "style": {}
+        },
+>>>>>>> 906fb5103b4e8464478a33e01471b8b405bd796c
         {
 			"path": "pages/index/index",
 			"style": {
