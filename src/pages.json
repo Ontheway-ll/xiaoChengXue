@@ -1,39 +1,45 @@
 {
-    "pages": [ //pages数组中第一项表示应用启动页,
+    "pages": [
         {
 			"path": "pages/index/index",
 			"style": {
-				"navigationBarTitleText": "公共信息采集"
+				"navigationBarTitleText": "公共信息采集",
+				"navigationBarBackgroundColor": "#224182"
 			}
 		},
 		{
 			"path": "pages/news/index",
 			"style": {
-				"navigationBarTitleText": "新闻"
+				"navigationBarTitleText": "新闻",
+				"navigationBarBackgroundColor": "#224182"
 			}
 		},
 		{
 			"path": "pages/patrol/index",
 			"style": {
-				"navigationBarTitleText": "巡逻"
+				"navigationBarTitleText": "巡逻",
+				"navigationBarBackgroundColor": "#224182"
 			}
 		},
 		{
 			"path": "pages/task/index",
 			"style": {
-				"navigationBarTitleText": "任务"
+				"navigationBarTitleText": "任务",
+				"navigationBarBackgroundColor": "#224182"
 			}
 		},
 		{
 			"path": "pages/my/index",
 			"style": {
-				"navigationBarTitleText": "我的"
+				"navigationBarTitleText": "我的",
+				"navigationBarBackgroundColor": "#224182"
 			}
 		},
 		{
 			"path": "pages/inforeport/index",
 			"style": {
-				"navigationBarTitleText": "信息上报"
+				"navigationBarTitleText": "信息上报",
+				"navigationBarBackgroundColor": "#224182"
 			}
 		},
 		{
@@ -51,28 +57,75 @@
 		{
             "path": "pages/historyreport/index",
             "style": {
-				"navigationBarTitleText": "历史上报"
+				"navigationBarTitleText": "历史上报",
+				"navigationBarBackgroundColor": "#224182"
 			}
 		},
 		{
             "path": "pages/about/index",
             "style": {
-				"navigationBarTitleText": "关于共助津门"
+				"navigationBarTitleText": "关于共助津门",
+				"navigationBarBackgroundColor": "#224182"
 			}
 		},
 		{
             "path": "pages/questions/index",
             "style": {
-				"navigationBarTitleText": "问题反馈"
+				"navigationBarTitleText": "问题反馈",
+				"navigationBarBackgroundColor": "#224182"
 			}
-        }
+		},
+		{
+            "path": "pages/mysign/index",
+            "style": {
+				"navigationBarTitleText": "我的签到",
+				"navigationBarBackgroundColor": "#224182"
+			}
+		},
+		{
+            "path": "pages/record/index",
+            "style": {
+				"navigationBarTitleText": "兑换记录",
+				"navigationBarBackgroundColor": "#224182"
+			}
+		},
+		{
+            "path": "pages/mystore/index",
+            "style": {
+				"navigationBarTitleText": "我的商城",
+				"navigationBarBackgroundColor": "#224182"
+			}
+		},
+		{
+            "path": "pages/mystar/index",
+            "style": {
+				"navigationBarTitleText": "我的积分",
+				"navigationBarBackgroundColor": "#224182"
+			}
+		},
+		{
+            "path": "pages/historypatrol/index",
+            "style": {
+				"navigationBarTitleText": "历史巡逻",
+				"navigationBarBackgroundColor": "#224182"
+			}
+		},
+		{
+            "path": "pages/adress/index",
+            "style": {
+				"navigationBarTitleText": "收货地址",
+				"navigationBarBackgroundColor": "#224182"
+			}
+		}
+		
+		
+		
     ],
     "globalStyle": {
     	"navigationBarTextStyle": "#fff",
-    	"navigationBarTitleText": "",
-    	"navigationBarBackgroundColor": "#757575"
-    	// "backgroundColor": "#F8F8F8",
-    	// "navigationStyle": "custom" 
+		"navigationBarTitleText": "",
+		"backgroundColor": "#e2e2e2"
+		
     },
     "tabBar": {
 		"color": "#666666",

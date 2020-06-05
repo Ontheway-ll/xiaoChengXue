@@ -122,7 +122,8 @@
 <style lang="less" scoped>
 	.title{
 		height: 250rpx;
-		width: 750rpx;
+		width: 740rpx;
+		padding: 4rpx;
 		image{
 			width: 100%;
 			height: 100%;
