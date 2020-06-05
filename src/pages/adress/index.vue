@@ -15,9 +15,7 @@
          <text class="ads">天津西青区某某街道凯德大厦3楼666ffkkf</text> 
       </view>
     </view>
-     
         <button @click="getadress"  type="primary">添加收货地址</button>
-      
   </view>
 </template>
 
