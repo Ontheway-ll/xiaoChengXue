@@ -73,18 +73,18 @@ export default {
                         })
                     }
                    //2.将用户登录code传递到后台置换用户SessionKey、OpenId等信息
-                   uni.request({
-                       url: 'https://app.rl.jyxin.com/user/login', 
-                       methods:'GET',
-                       header:{
-                            'content-type': 'application/json'
-                       },
-                       success:(res)=>{
-                           console.log(res);
-                          //openId、或SessionKdy存储//隐藏loading
-                                uni.hideLoading(); 
-                       }
-                   });
+                //    uni.request({
+                //        url: 'https://app.rl.jyxin.com/user/login', 
+                //        methods:'GET',
+                //        header:{
+                //             'content-type': 'application/json'
+                //        },
+                //        success:(res)=>{
+                //            console.log(res);
+                //           //openId、或SessionKdy存储//隐藏loading
+                //                 uni.hideLoading(); 
+                //        }
+                //    });
                   }  
                })
             },
