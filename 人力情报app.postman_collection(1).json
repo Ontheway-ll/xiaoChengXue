@@ -1,0 +1,1762 @@
+{
+	"info": {
+		"_postman_id": "f41ab277-c828-46e1-8685-fbe1e6875c2d",
+		"name": "人力情报app",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "接口",
+			"item": [
+				{
+					"name": "注册登录",
+					"item": [
+						{
+							"name": "手机号登录",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"key": "phone",
+											"value": "13122222221",
+											"type": "text"
+										},
+										{
+											"key": "password",
+											"value": "111111",
+											"type": "text"
+										},
+										{
+											"key": "loginType",
+											"value": "phonePasswordLogin",
+											"description": "phonePasswordLogin\nwechatLogin\nphoneCodeLogin\nqqLogin",
+											"type": "text"
+										},
+										{
+											"key": "openid",
+											"value": "2333",
+											"type": "text",
+											"disabled": true
+										},
+										{
+											"key": "name",
+											"value": "马二",
+											"type": "text",
+											"disabled": true
+										},
+										{
+											"key": "sex",
+											"value": "1",
+											"type": "text",
+											"disabled": true
+										},
+										{
+											"key": "avatar",
+											"value": "",
+											"type": "text",
+											"disabled": true
+										},
+										{
+											"key": "currAddress",
+											"value": "东丽",
+											"type": "text",
+											"disabled": true
+										}
+									]
+								},
+								"url": {
+									"raw": "https://app.rl.jyxin.com/user/login",
+									"protocol": "https",
+									"host": [
+										"app",
+										"rl",
+										"jyxin",
+										"com"
+									],
+									"path": [
+										"user",
+										"login"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "手机号注册方式（显式注册 只支持手机号 密码）",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiLlvKDkuIkiLCJqdGkiOiIxMiIsImV4cCI6MTU5MTM3NTY1NH0.7So0J7pn7bKPpWtzZ4UjNSOgUXuoz7ESekTAC6RGNxicXXIl2KePesNWBsXpo_BEVtwBGIhtCMXJRNqvzKghqA",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"key": "phone",
+											"value": "13122222221",
+											"type": "text"
+										},
+										{
+											"key": "password",
+											"value": "11",
+											"type": "text"
+										},
+										{
+											"key": "code",
+											"value": "",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "https://app.rl.jyxin.com/user/reg",
+									"protocol": "https",
+									"host": [
+										"app",
+										"rl",
+										"jyxin",
+										"com"
+									],
+									"path": [
+										"user",
+										"reg"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "微信登录",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"key": "phone",
+											"value": "13122222221",
+											"type": "text",
+											"disabled": true
+										},
+										{
+											"key": "password",
+											"value": "1111111",
+											"type": "text",
+											"disabled": true
+										},
+										{
+											"key": "loginType",
+											"value": "wechatLogin",
+											"description": "phonePasswordLogin\nwechatLogin\nphoneCodeLogin\nqqLogin",
+											"type": "text"
+										},
+										{
+											"key": "openid",
+											"value": "2333",
+											"type": "text"
+										},
+										{
+											"key": "name",
+											"value": "马二",
+											"type": "text"
+										},
+										{
+											"key": "sex",
+											"value": "1",
+											"type": "text"
+										},
+										{
+											"key": "avatar",
+											"value": "",
+											"type": "text"
+										},
+										{
+											"key": "currAddress",
+											"value": "东丽",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "app.rl.jyxin.com/user/login",
+									"host": [
+										"app",
+										"rl",
+										"jyxin",
+										"com"
+									],
+									"path": [
+										"user",
+										"login"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "QQ登录",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"key": "phone",
+											"value": "13122222221",
+											"type": "text",
+											"disabled": true
+										},
+										{
+											"key": "password",
+											"value": "1111111",
+											"type": "text",
+											"disabled": true
+										},
+										{
+											"key": "loginType",
+											"value": "qqLogin",
+											"description": "phonePasswordLogin\nwechatLogin\nphoneCodeLogin\nqqLogin",
+											"type": "text"
+										},
+										{
+											"key": "openid",
+											"value": "2333",
+											"type": "text"
+										},
+										{
+											"key": "name",
+											"value": "马二",
+											"type": "text"
+										},
+										{
+											"key": "sex",
+											"value": "1",
+											"type": "text"
+										},
+										{
+											"key": "avatar",
+											"value": "",
+											"type": "text"
+										},
+										{
+											"key": "currAddress",
+											"value": "东丽",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "app.rl.jyxin.com/user/login",
+									"host": [
+										"app",
+										"rl",
+										"jyxin",
+										"com"
+									],
+									"path": [
+										"user",
+										"login"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "手机号验证码登录",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"key": "phone",
+											"value": "13122222221",
+											"type": "text"
+										},
+										{
+											"key": "code",
+											"value": "1111111",
+											"type": "text"
+										},
+										{
+											"key": "loginType",
+											"value": "phoneCodeLogin",
+											"description": "phonePasswordLogin\nwechatLogin\nphoneCodeLogin\nqqLogin",
+											"type": "text"
+										},
+										{
+											"key": "openid",
+											"value": "2333",
+											"type": "text",
+											"disabled": true
+										},
+										{
+											"key": "name",
+											"value": "马二",
+											"type": "text",
+											"disabled": true
+										},
+										{
+											"key": "sex",
+											"value": "1",
+											"type": "text",
+											"disabled": true
+										},
+										{
+											"key": "avatar",
+											"value": "",
+											"type": "text",
+											"disabled": true
+										},
+										{
+											"key": "currAddress",
+											"value": "东丽",
+											"type": "text",
+											"disabled": true
+										}
+									]
+								},
+								"url": {
+									"raw": "app.rl.jyxin.com/user/login",
+									"host": [
+										"app",
+										"rl",
+										"jyxin",
+										"com"
+									],
+									"path": [
+										"user",
+										"login"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "code2Session微信小程序专用",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"key": "code",
+											"value": "111",
+											"type": "text"
+										},
+										{
+											"key": "size",
+											"value": "89530",
+											"type": "text",
+											"disabled": true
+										},
+										{
+											"key": "type",
+											"value": "",
+											"type": "text",
+											"disabled": true
+										},
+										{
+											"key": "\"id\" -> \"WU_FILE_0\"",
+											"value": "",
+											"type": "text",
+											"disabled": true
+										}
+									]
+								},
+								"url": {
+									"raw": "app.rl.jyxin.com/user/code2Session",
+									"host": [
+										"app",
+										"rl",
+										"jyxin",
+										"com"
+									],
+									"path": [
+										"user",
+										"code2Session"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "微信小程序登录",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"key": "loginType",
+											"value": "wechatAppLogin",
+											"description": "phonePasswordLogin\nwechatLogin\nphoneCodeLogin\nqqLogin",
+											"type": "text"
+										},
+										{
+											"key": "sessionkey",
+											"value": "",
+											"type": "text"
+										},
+										{
+											"key": "iv",
+											"value": "",
+											"type": "text"
+										},
+										{
+											"key": "encryptedData",
+											"value": "",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "app.rl.jyxin.com/user/login",
+									"host": [
+										"app",
+										"rl",
+										"jyxin",
+										"com"
+									],
+									"path": [
+										"user",
+										"login"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "修改密码",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiLlvKDkuIkiLCJqdGkiOiIxMiIsImV4cCI6MTU5MTM4MDcyMn0.RZodOf-ibbmsd5neTatg8WcJtl4VVnpLbedWP2IG4hMScyKJqr01xzefVglEdVYDWtMSdVG8HPue6hyMIHFn2A",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"key": "newPass",
+											"value": "111111",
+											"type": "text"
+										},
+										{
+											"key": "oldPass",
+											"value": "222222",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "https://app.rl.jyxin.com/user/updatePassword",
+									"protocol": "https",
+									"host": [
+										"app",
+										"rl",
+										"jyxin",
+										"com"
+									],
+									"path": [
+										"user",
+										"updatePassword"
+									]
+								}
+							},
+							"response": []
+						}
+					],
+					"_postman_isSubFolder": true
+				},
+				{
+					"name": "文件",
+					"item": [
+						{
+							"name": "上传文件",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiLpqazkuowiLCJqdGkiOiIyZTMwYjIzMGFlYTc0NTMxODdmODk5YmE0NjcwZjg0MiIsImV4cCI6MTU4OTQ1MTIyNn0.X91wkT9G2Ppm95hPtZOAlMswoDLLH8DwbsgEsbcIey_UykF6Bi2Fkm4gjkluA-N9agYrGLUlh-dIvv3BUiFCUA",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "file",
+											"type": "file",
+											"src": ""
+										},
+										{
+											"key": "file",
+											"type": "file",
+											"src": "",
+											"disabled": true
+										},
+										{
+											"key": "file",
+											"type": "file",
+											"src": "",
+											"disabled": true
+										}
+									]
+								},
+								"url": {
+									"raw": "https://app.rl.jyxin.com/file/upload",
+									"protocol": "https",
+									"host": [
+										"app",
+										"rl",
+										"jyxin",
+										"com"
+									],
+									"path": [
+										"file",
+										"upload"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "删除文件",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiLpqazkuowiLCJqdGkiOiIyZTMwYjIzMGFlYTc0NTMxODdmODk5YmE0NjcwZjg0MiIsImV4cCI6MTU4OTQ1MTIyNn0.X91wkT9G2Ppm95hPtZOAlMswoDLLH8DwbsgEsbcIey_UykF6Bi2Fkm4gjkluA-N9agYrGLUlh-dIvv3BUiFCUA",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "id",
+											"value": "6c32b45c33bf020f859014a1707387db",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "https://app.rl.jyxin.com/file/delete",
+									"protocol": "https",
+									"host": [
+										"app",
+										"rl",
+										"jyxin",
+										"com"
+									],
+									"path": [
+										"file",
+										"delete"
+									]
+								}
+							},
+							"response": []
+						}
+					],
+					"_postman_isSubFolder": true
+				},
+				{
+					"name": "事件",
+					"item": [
+						{
+							"name": "上报事件",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiLpqazkuowiLCJqdGkiOiIyZTMwYjIzMGFlYTc0NTMxODdmODk5YmE0NjcwZjg0MiIsImV4cCI6MTU5MTAyNDY1OH0.92StwrkuSGsXIl3sSdGpP57ESjNCZjWy5xFOAVpW8bGck7adebrVoPsOq7W8nM_7vd04ELTP4DCnTcz1Qj4qbg",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"key": "content",
+											"value": "12344444",
+											"type": "text"
+										},
+										{
+											"key": "fileids",
+											"value": "11",
+											"type": "text",
+											"disabled": true
+										},
+										{
+											"key": "fileids",
+											"value": "22",
+											"type": "text",
+											"disabled": true
+										},
+										{
+											"key": "lat",
+											"value": "100.1",
+											"type": "text",
+											"disabled": true
+										},
+										{
+											"key": "lng",
+											"value": "100.1",
+											"type": "text",
+											"disabled": true
+										},
+										{
+											"key": "city",
+											"value": "天津市",
+											"type": "text",
+											"disabled": true
+										},
+										{
+											"key": "district",
+											"value": "南开区",
+											"type": "text",
+											"disabled": true
+										},
+										{
+											"key": "street",
+											"value": "万兴街",
+											"type": "text",
+											"disabled": true
+										},
+										{
+											"key": "taskId",
+											"value": "",
+											"type": "text",
+											"disabled": true
+										},
+										{
+											"key": "type",
+											"value": "1",
+											"description": "1 涉恐 2 涉稳 3 刑事 4 治安 5 隐患 6 其他",
+											"type": "text",
+											"disabled": true
+										},
+										{
+											"key": "address",
+											"value": "",
+											"description": "全地址",
+											"type": "text",
+											"disabled": true
+										}
+									]
+								},
+								"url": {
+									"raw": "https://app.rl.jyxin.com/event/report",
+									"protocol": "https",
+									"host": [
+										"app",
+										"rl",
+										"jyxin",
+										"com"
+									],
+									"path": [
+										"event",
+										"report"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "我的事件列表",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiLpqazkuowiLCJqdGkiOiIyZTMwYjIzMGFlYTc0NTMxODdmODk5YmE0NjcwZjg0MiIsImV4cCI6MTU4OTQ1NTUxOH0.r0mNhB6DOsW9tpYkfH6B0Sqaxqx21fvFyFrzdET2Ge-mxyES_Oju604h3iZqmPqB3g5eqE_ZQjzNLl9kZCXnqA",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"key": "current",
+											"value": "1",
+											"type": "text"
+										},
+										{
+											"key": "size",
+											"value": "10",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "https://app.rl.jyxin.com/event/list",
+									"protocol": "https",
+									"host": [
+										"app",
+										"rl",
+										"jyxin",
+										"com"
+									],
+									"path": [
+										"event",
+										"list"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "我的事件详情",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiLpqazkuowiLCJqdGkiOiIyZTMwYjIzMGFlYTc0NTMxODdmODk5YmE0NjcwZjg0MiIsImV4cCI6MTU4OTQ1NTUxOH0.r0mNhB6DOsW9tpYkfH6B0Sqaxqx21fvFyFrzdET2Ge-mxyES_Oju604h3iZqmPqB3g5eqE_ZQjzNLl9kZCXnqA",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"key": "id",
+											"value": "6321c6b0870153591f3eda592322ae4e",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "https://app.rl.jyxin.com/event/detail",
+									"protocol": "https",
+									"host": [
+										"app",
+										"rl",
+										"jyxin",
+										"com"
+									],
+									"path": [
+										"event",
+										"detail"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "修改事件",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiLpqazkuowiLCJqdGkiOiIyZTMwYjIzMGFlYTc0NTMxODdmODk5YmE0NjcwZjg0MiIsImV4cCI6MTU4OTgxODMwOH0.gO1tDywZhjHIXP-MRBjcoLuKWLoKB2txI85xjygoyVKpNzhkuQJbY6iz3AW9IUsjFZcktmlhNW06jjHET1MHTw",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"key": "content",
+											"value": "123",
+											"type": "text"
+										},
+										{
+											"key": "fileids",
+											"value": "11",
+											"type": "text",
+											"disabled": true
+										},
+										{
+											"key": "fileids",
+											"value": "22",
+											"type": "text",
+											"disabled": true
+										},
+										{
+											"key": "lat",
+											"value": "100.1",
+											"type": "text",
+											"disabled": true
+										},
+										{
+											"key": "lng",
+											"value": "100.1",
+											"type": "text",
+											"disabled": true
+										},
+										{
+											"key": "city",
+											"value": "天津市",
+											"type": "text",
+											"disabled": true
+										},
+										{
+											"key": "district",
+											"value": "南开区",
+											"type": "text",
+											"disabled": true
+										},
+										{
+											"key": "street",
+											"value": "万兴街",
+											"type": "text",
+											"disabled": true
+										},
+										{
+											"key": "taskId",
+											"value": "",
+											"type": "text",
+											"disabled": true
+										},
+										{
+											"key": "type",
+											"value": "1",
+											"description": "1 涉恐 2 涉稳 3 刑事 4 治安 5 隐患 6 其他",
+											"type": "text",
+											"disabled": true
+										},
+										{
+											"key": "address",
+											"value": "",
+											"description": "全地址",
+											"type": "text",
+											"disabled": true
+										}
+									]
+								},
+								"url": {
+									"raw": "https://app.rl.jyxin.com/event/update",
+									"protocol": "https",
+									"host": [
+										"app",
+										"rl",
+										"jyxin",
+										"com"
+									],
+									"path": [
+										"event",
+										"update"
+									]
+								}
+							},
+							"response": []
+						}
+					],
+					"_postman_isSubFolder": true
+				},
+				{
+					"name": "任务",
+					"item": [
+						{
+							"name": "下发",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiLlvKDkuIkiLCJqdGkiOiIxMiIsImV4cCI6MTU5MTM3NTY1NH0.7So0J7pn7bKPpWtzZ4UjNSOgUXuoz7ESekTAC6RGNxicXXIl2KePesNWBsXpo_BEVtwBGIhtCMXJRNqvzKghqA",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"key": "content",
+											"value": "123",
+											"type": "text"
+										},
+										{
+											"key": "fileids",
+											"value": "11",
+											"type": "text"
+										},
+										{
+											"key": "title",
+											"value": "hxt11111",
+											"type": "text"
+										},
+										{
+											"key": "personSum",
+											"value": "3",
+											"type": "text"
+										},
+										{
+											"key": "urgentLevel",
+											"value": "1",
+											"type": "text"
+										},
+										{
+											"key": "startTime",
+											"value": "2020-06-04 15:34:12",
+											"type": "text"
+										},
+										{
+											"key": "endTime",
+											"value": "2020-06-10 20:00:32",
+											"type": "text"
+										},
+										{
+											"key": "attendFlag",
+											"value": "1",
+											"description": "1必须  0自愿",
+											"type": "text"
+										},
+										{
+											"key": "type",
+											"value": "1",
+											"description": "1 涉恐 2 涉稳 3 刑事 4 治安 5 隐患 6 其他",
+											"type": "text"
+										},
+										{
+											"key": "hasFile",
+											"value": "0",
+											"type": "text"
+										},
+										{
+											"key": "delFlag",
+											"value": "0",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "http://localhost:8080/task/send",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"task",
+										"send"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "任务列表",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiLlvKDkuIkiLCJqdGkiOiIxMiIsImV4cCI6MTU5MTYxMTYzNH0.1BUdDwoCIML1ZNbPL0sefkGC1DSyuRRJAUHIJaaSnXE6PUsOH53pbupEzWiJ4MU6FYiEIfGxp1iD2ceFMMTl0Q",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"key": "current",
+											"value": "1",
+											"type": "text"
+										},
+										{
+											"key": "size",
+											"value": "10",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "https://app.rl.jyxin.com/task/list",
+									"protocol": "https",
+									"host": [
+										"app",
+										"rl",
+										"jyxin",
+										"com"
+									],
+									"path": [
+										"task",
+										"list"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "任务下的上报列表",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiLlvKDkuIkiLCJqdGkiOiIxMiIsImV4cCI6MTU5MTM3Njc3OX0.WSOnwxq-rMb-VD6cm6XGSYz17imqHWsAYiKp08hTUg7-gkN7semWFrHWtDw8jre4wzvLfSdMtkZF81Ujeyvd9A",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"key": "current",
+											"value": "1",
+											"type": "text"
+										},
+										{
+											"key": "size",
+											"value": "10",
+											"type": "text"
+										},
+										{
+											"key": "taskId",
+											"value": "e7958e864c36bf18fa5724985fed380d",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "https://app.rl.jyxin.com/event/list",
+									"protocol": "https",
+									"host": [
+										"app",
+										"rl",
+										"jyxin",
+										"com"
+									],
+									"path": [
+										"event",
+										"list"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "任务详情",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiLpqazkuowiLCJqdGkiOiIyZTMwYjIzMGFlYTc0NTMxODdmODk5YmE0NjcwZjg0MiIsImV4cCI6MTU5MTAyNTI0N30.b7vs2aEVIVK81g2Npx0ylSPPOZlINen8USnf0utiMgMo1xr5Mmysi1j1vn1AeMCuTmFSfakRodzEgtj86rqP5g",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"key": "id",
+											"value": "b6f72d83494a7fb1df9b1564d67120f0",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "https://app.rl.jyxin.com/task/detail",
+									"protocol": "https",
+									"host": [
+										"app",
+										"rl",
+										"jyxin",
+										"com"
+									],
+									"path": [
+										"task",
+										"detail"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "修改任务",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiLpqazkuowiLCJqdGkiOiIyZTMwYjIzMGFlYTc0NTMxODdmODk5YmE0NjcwZjg0MiIsImV4cCI6MTU4OTgxODMwOH0.gO1tDywZhjHIXP-MRBjcoLuKWLoKB2txI85xjygoyVKpNzhkuQJbY6iz3AW9IUsjFZcktmlhNW06jjHET1MHTw",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"key": "content",
+											"value": "123",
+											"type": "text"
+										},
+										{
+											"key": "fileids",
+											"value": "11",
+											"type": "text",
+											"disabled": true
+										},
+										{
+											"key": "fileids",
+											"value": "22",
+											"type": "text",
+											"disabled": true
+										},
+										{
+											"key": "lat",
+											"value": "100.1",
+											"type": "text",
+											"disabled": true
+										},
+										{
+											"key": "lng",
+											"value": "100.1",
+											"type": "text",
+											"disabled": true
+										},
+										{
+											"key": "city",
+											"value": "天津市",
+											"type": "text",
+											"disabled": true
+										},
+										{
+											"key": "district",
+											"value": "南开区",
+											"type": "text",
+											"disabled": true
+										},
+										{
+											"key": "street",
+											"value": "万兴街",
+											"type": "text",
+											"disabled": true
+										},
+										{
+											"key": "taskId",
+											"value": "",
+											"type": "text",
+											"disabled": true
+										},
+										{
+											"key": "type",
+											"value": "1",
+											"description": "1 涉恐 2 涉稳 3 刑事 4 治安 5 隐患 6 其他",
+											"type": "text",
+											"disabled": true
+										},
+										{
+											"key": "address",
+											"value": "",
+											"description": "全地址",
+											"type": "text",
+											"disabled": true
+										}
+									]
+								},
+								"url": {
+									"raw": "https://app.rl.jyxin.com/task/update",
+									"protocol": "https",
+									"host": [
+										"app",
+										"rl",
+										"jyxin",
+										"com"
+									],
+									"path": [
+										"task",
+										"update"
+									]
+								}
+							},
+							"response": []
+						}
+					],
+					"_postman_isSubFolder": true
+				},
+				{
+					"name": "巡逻上报接口",
+					"item": [
+						{
+							"name": "巡逻上报",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiLlvKDkuIkiLCJqdGkiOiIxMiIsImV4cCI6MTU5MTM3NTY1NH0.7So0J7pn7bKPpWtzZ4UjNSOgUXuoz7ESekTAC6RGNxicXXIl2KePesNWBsXpo_BEVtwBGIhtCMXJRNqvzKghqA",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"key": "speed",
+											"value": "12322222222222222222222222222",
+											"type": "text"
+										},
+										{
+											"key": "mileage",
+											"value": "11",
+											"type": "text"
+										},
+										{
+											"key": "timeLength",
+											"value": "11",
+											"type": "text"
+										},
+										{
+											"key": "taskId",
+											"value": "a26f7afcf17666c591db1b5c48ac5b60",
+											"type": "text"
+										},
+										{
+											"key": "point",
+											"value": "[{ \"longitude\": \"2233\", \"latitude\": \"1243\",\"sequence\": \"1\"},{ \"longitude\": \"121\",\"latitude\": \"1411\", \"sequence\": \"2\"}]",
+											"type": "text"
+										},
+										{
+											"key": "startTime",
+											"value": "2020-06-01 15:34:12",
+											"type": "text",
+											"disabled": true
+										},
+										{
+											"key": "endTime",
+											"value": "2020-06-01 20:00:32",
+											"type": "text",
+											"disabled": true
+										},
+										{
+											"key": "attendFlag",
+											"value": "1",
+											"description": "1必须  0自愿",
+											"type": "text",
+											"disabled": true
+										},
+										{
+											"key": "type",
+											"value": "1",
+											"description": "1 涉恐 2 涉稳 3 刑事 4 治安 5 隐患 6 其他",
+											"type": "text",
+											"disabled": true
+										},
+										{
+											"key": "hasFile",
+											"value": "0",
+											"type": "text",
+											"disabled": true
+										},
+										{
+											"key": "delFlag",
+											"value": "0",
+											"type": "text",
+											"disabled": true
+										}
+									]
+								},
+								"url": {
+									"raw": "https://app.rl.jyxin.com/taskReceiverLine/report",
+									"protocol": "https",
+									"host": [
+										"app",
+										"rl",
+										"jyxin",
+										"com"
+									],
+									"path": [
+										"taskReceiverLine",
+										"report"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "巡逻列表",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiLlvKDkuIkiLCJqdGkiOiIxMiIsImV4cCI6MTU5MTM3NTY1NH0.7So0J7pn7bKPpWtzZ4UjNSOgUXuoz7ESekTAC6RGNxicXXIl2KePesNWBsXpo_BEVtwBGIhtCMXJRNqvzKghqA",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"key": "current",
+											"value": "1",
+											"type": "text"
+										},
+										{
+											"key": "size",
+											"value": "10",
+											"type": "text"
+										},
+										{
+											"key": "taskId",
+											"value": "a26f7afcf17666c591db1b5c48ac5b60",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "https://app.rl.jyxin.com/taskReceiverLine/list",
+									"protocol": "https",
+									"host": [
+										"app",
+										"rl",
+										"jyxin",
+										"com"
+									],
+									"path": [
+										"taskReceiverLine",
+										"list"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "任务详情",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiLpqazkuowiLCJqdGkiOiIyZTMwYjIzMGFlYTc0NTMxODdmODk5YmE0NjcwZjg0MiIsImV4cCI6MTU5MTAyNTI0N30.b7vs2aEVIVK81g2Npx0ylSPPOZlINen8USnf0utiMgMo1xr5Mmysi1j1vn1AeMCuTmFSfakRodzEgtj86rqP5g",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"key": "id",
+											"value": "b6f72d83494a7fb1df9b1564d67120f0",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "https://app.rl.jyxin.com/task/detail",
+									"protocol": "https",
+									"host": [
+										"app",
+										"rl",
+										"jyxin",
+										"com"
+									],
+									"path": [
+										"task",
+										"detail"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "获取巡逻详情",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiLlvKDkuIkiLCJqdGkiOiIxMiIsImV4cCI6MTU5MTM3NTY1NH0.7So0J7pn7bKPpWtzZ4UjNSOgUXuoz7ESekTAC6RGNxicXXIl2KePesNWBsXpo_BEVtwBGIhtCMXJRNqvzKghqA",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"key": "id",
+											"value": "cfce3079efa3a84c5e38f7820c3632a9",
+											"type": "text"
+										},
+										{
+											"key": "fileids",
+											"value": "11",
+											"type": "text",
+											"disabled": true
+										},
+										{
+											"key": "fileids",
+											"value": "22",
+											"type": "text",
+											"disabled": true
+										},
+										{
+											"key": "lat",
+											"value": "100.1",
+											"type": "text",
+											"disabled": true
+										},
+										{
+											"key": "lng",
+											"value": "100.1",
+											"type": "text",
+											"disabled": true
+										},
+										{
+											"key": "city",
+											"value": "天津市",
+											"type": "text",
+											"disabled": true
+										},
+										{
+											"key": "district",
+											"value": "南开区",
+											"type": "text",
+											"disabled": true
+										},
+										{
+											"key": "street",
+											"value": "万兴街",
+											"type": "text",
+											"disabled": true
+										},
+										{
+											"key": "taskId",
+											"value": "",
+											"type": "text",
+											"disabled": true
+										},
+										{
+											"key": "type",
+											"value": "1",
+											"description": "1 涉恐 2 涉稳 3 刑事 4 治安 5 隐患 6 其他",
+											"type": "text",
+											"disabled": true
+										},
+										{
+											"key": "address",
+											"value": "",
+											"description": "全地址",
+											"type": "text",
+											"disabled": true
+										}
+									]
+								},
+								"url": {
+									"raw": "https://app.rl.jyxin.com/taskReceiverLine/detail",
+									"protocol": "https",
+									"host": [
+										"app",
+										"rl",
+										"jyxin",
+										"com"
+									],
+									"path": [
+										"taskReceiverLine",
+										"detail"
+									]
+								}
+							},
+							"response": []
+						}
+					],
+					"description": "TaskReceiverLineController",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"id": "1f46f60e-0b53-44fa-a451-5fbf03a8b017",
+								"type": "text/javascript",
+								"exec": [
+									""
+								]
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"id": "f7d03bec-7adc-403a-9493-45e368fc2145",
+								"type": "text/javascript",
+								"exec": [
+									""
+								]
+							}
+						}
+					],
+					"_postman_isSubFolder": true
+				},
+				{
+					"name": "问题",
+					"item": [
+						{
+							"name": "问题反馈",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiLlvKDkuIkiLCJqdGkiOiIxMiIsImV4cCI6MTU5MTM3NTY1NH0.7So0J7pn7bKPpWtzZ4UjNSOgUXuoz7ESekTAC6RGNxicXXIl2KePesNWBsXpo_BEVtwBGIhtCMXJRNqvzKghqA",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"key": "content",
+											"value": "123",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "https://app.rl.jyxin.com/problem/feedback",
+									"protocol": "https",
+									"host": [
+										"app",
+										"rl",
+										"jyxin",
+										"com"
+									],
+									"path": [
+										"problem",
+										"feedback"
+									]
+								}
+							},
+							"response": []
+						}
+					],
+					"description": "ProblemController",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"id": "1f46f60e-0b53-44fa-a451-5fbf03a8b017",
+								"type": "text/javascript",
+								"exec": [
+									""
+								]
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"id": "f7d03bec-7adc-403a-9493-45e368fc2145",
+								"type": "text/javascript",
+								"exec": [
+									""
+								]
+							}
+						}
+					],
+					"_postman_isSubFolder": true
+				},
+				{
+					"name": "签到",
+					"item": [
+						{
+							"name": "签到",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiLlvKDkuIkiLCJqdGkiOiIxMiIsImV4cCI6MTU5MTYxMDU5NX0.8i947K9cXuZ_xjmROHiUG6M61SzkupZZ6XdVa7v7ojwprykBPy9H8y9DS_Cpi-oNc-ziy0D1togAVYp1Ai9V4g",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"key": "signDate",
+											"value": "20200512",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "https://app.rl.jyxin.com/sign/doSign",
+									"protocol": "https",
+									"host": [
+										"app",
+										"rl",
+										"jyxin",
+										"com"
+									],
+									"path": [
+										"sign",
+										"doSign"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "签到记录",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiLlvKDkuIkiLCJqdGkiOiIxMiIsImV4cCI6MTU5MTYxMTY4Nn0.wLyu8ZoleT_EZDtiG55mKJBY3FPppNbcPC7To5MgjY7kzHQDeo6cXDNAKvyzK-1QDFqrSr6qZ14K6gvC2nQuyg",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"key": "nowDate",
+											"value": "202006",
+											"type": "text"
+										},
+										{
+											"key": "signDate",
+											"value": "20200608",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "https://app.rl.jyxin.com/sign/list",
+									"protocol": "https",
+									"host": [
+										"app",
+										"rl",
+										"jyxin",
+										"com"
+									],
+									"path": [
+										"sign",
+										"list"
+									]
+								}
+							},
+							"response": []
+						}
+					],
+					"description": "SignDetailController",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"id": "1f46f60e-0b53-44fa-a451-5fbf03a8b017",
+								"type": "text/javascript",
+								"exec": [
+									""
+								]
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"id": "f7d03bec-7adc-403a-9493-45e368fc2145",
+								"type": "text/javascript",
+								"exec": [
+									""
+								]
+							}
+						}
+					],
+					"_postman_isSubFolder": true
+				}
+			]
+		}
+	]
+}
