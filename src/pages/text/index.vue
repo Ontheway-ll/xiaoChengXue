@@ -32,14 +32,15 @@ export default {
     },
     methods:{
          //第一授权获取用户信息===》按钮触发
-            wxGetUserInfo(){
-             let _this = this;
+            wxGetUserInfo(res){
+                console.log(res);
+                let _this = this;
              uni.getUserInfo({
                  provider: 'weixin',//登录服务提供商
                  success:function(info){
+                     console.log(info);
                     let nickName = info.userInfo.nickName; //昵称
                     let avatarUrl = info.userInfo.avatarUrl; //头像
-                    console.log(info);
                      try {
                          uni.setStorageSync('isCanUse', false);//记录是否第一次授权  false:表示不是第一次授权
                             _this.updateUserInfo();
@@ -58,13 +59,14 @@ export default {
                 // 1.wx获取登录用户code
                uni.login({
                   provider: 'weixin',
-                  success:function(loginRes){
-                     let code = loginRes.code  
+                  success:function(res){
+                      console.log(res);
+                     let code = res.code  
                     if(!_this.isCanUse) {
                         //  非第一次授权获取用户信息
                         uni.getUserInfo({
                             provider: 'weixin',
-                            success:function(loginRes){
+                            success:function(res){
                              //获取用户信息后向调用信息更新方法
                              let nickName = infoRes.userInfo.nickName; //昵称
                              let avatarUrl = infoRes.userInfo.avatarUrl; //头像
@@ -75,7 +77,12 @@ export default {
                    //2.将用户登录code传递到后台置换用户SessionKey、OpenId等信息
                    uni.request({
                        url: 'https://app.rl.jyxin.com/user/login', 
-                       methods:'GET',
+                       methods:'post',
+                       data:{
+                        "code": code,
+						"avatarUrl": userInfo.avatarUrl,
+						"nickName": userInfo.nickName
+                       },
                        header:{
                             'content-type': 'application/json'
                        },
