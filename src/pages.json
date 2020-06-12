@@ -116,6 +116,20 @@
 				"navigationBarTitleText": "收货地址",
 				"navigationBarBackgroundColor": "#224182"
 			}
+		},
+		{
+            "path": "pages/taskdetail/index",
+            "style": {
+				"navigationBarTitleText": "任务详情",
+				"navigationBarBackgroundColor": "#224182"
+			}
+		},
+		{
+            "path": "pages/patroldetail/index",
+            "style": {
+				"navigationBarTitleText": "巡逻详情",
+				"navigationBarBackgroundColor": "#224182"
+			}
 		}
 		
 		

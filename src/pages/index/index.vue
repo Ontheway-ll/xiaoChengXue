@@ -6,27 +6,27 @@
 		<view class="content">
 			<view class="images">
 			 <!-- redirect页面跳转后无法在返回 -->
-			 <navigator url="/pages/inforeport/index"  hover-class="className">
+			 <view class="liu" @tap="onsend" data-type="6" >
 			 <image src="../../static/imgs/home_sb_down.png" />
-			 </navigator>
+			 </view>
 		 </view>
 		 <!-- 下面5个小球 -->
 		 <view class="fiveball">
-			<navigator url="/pages/inforeport/index"  hover-class="className">
+			<view class="five" @tap="onsend" data-type="1" >
 				<img src="../../static/imgs/home_sk_down.png" alt="">
-			</navigator>
-			<navigator url="/pages/inforeport/index"  hover-class="className">
+			</view>
+			<view  class="five" @tap="onsend" data-type="2" >
 				<img src="../../static/imgs/home_sw_down.png" alt="">
-			</navigator>
-			<navigator url="/pages/inforeport/index"  hover-class="className">
+			</view>
+			<view  class="five" @tap="onsend" data-type="3" >
 				<img src="../../static/imgs/home_xs_down.png" alt="">
-			</navigator>
-			<navigator url="/pages/inforeport/index"  hover-class="className">
+			</view>
+			<view  class="five" @tap="onsend" data-type="4" >
 				<img src="../../static/imgs/home_za_down.png" alt="">
-			</navigator>
-			<navigator url="/pages/inforeport/index"  hover-class="className">
+			</view>
+			<view class="five"  @tap="onsend" data-type="5">
 				<img src="../../static/imgs/home_yh_down.png" alt="">
-			</navigator>
+			</view>
 		 </view>
 		 <!-- 下面的一条线 -->
 		 <view class="one">
@@ -110,21 +110,31 @@ import denglu from "@/components/ah-denglu/denglu.vue"
 	export default {
 		data() {
 			return {
-				
+
 			}
 		},
 		components:{
 			denglu
 		},
-		onLoad() {
-
-		},
 		methods: {
-
+			// 点击按钮跳转对应的页面
+			onsend(e){
+			console.log(e);
+			 var type = e.currentTarget.dataset.type
+			 uni.navigateTo({
+				  url: '/pages/inforeport/index?type='+ type,
+				  success: function(res) {
+						// console.log(res);
+					},
+					fail: function(res) {
+						console.log(res);
+					},
+					complete: function(res) {}  
+			 })
+			}
 		}
 	}
 </script>
-
 <style lang="less" scoped>
 	.title{
 		height: 250rpx;
@@ -141,7 +151,7 @@ import denglu from "@/components/ah-denglu/denglu.vue"
 		 display: flex;
 		 padding-top: 10rpx;
 		 background-color: #f4f9fa;
-		 navigator{
+		 .liu{
 			display: flex;
 			flex: 1;
 			justify-content: center;
@@ -157,7 +167,7 @@ import denglu from "@/components/ah-denglu/denglu.vue"
 		display: flex;
 		padding: 20rpx 0;
 		background-color: #f4f9fa;
-		navigator{
+		.five{
 			display:flex;
 			flex: 1;
 			justify-content: center;
