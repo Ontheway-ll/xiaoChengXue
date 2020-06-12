@@ -199,34 +199,33 @@ import denglu from "@/components/ah-denglu/denglu.vue"
 		background-color: #f4f9fa;
 		padding: 0 5rpx ;
 		.firstlist{
-		background-color: #ffffff ;
-		display: flex;	
-		height: 200rpx;
-		margin-bottom: 20rpx;
-		.tupian{
-			flex: 1;
-			margin-right: 10rpx;
-			image{
-				width: 100%;
-				height: 100%;
-			}
-		}
-		navigator{
-				flex: 2;
-			.right{
-				height: 200rpx;
-				.down{
-					margin-left: 40rpx;
-					margin-top: 80rpx;
-					color:#888888;
-					.lft{
-						margin-right: 20rpx;
-					}
+			background-color: #ffffff ;
+			display: flex;	
+			height: 200rpx;
+			margin-bottom: 20rpx;
+			.tupian{
+				flex: 1;
+				margin-right: 10rpx;
+				image{
+					width: 100%;
+					height: 100%;
 				}
-			}	
+			}
+		 	navigator{
+				flex: 2;
+				.right{
+					height: 200rpx;
+					.down{
+						margin-left: 40rpx;
+						margin-top: 80rpx;
+						color:#888888;
+						.lft{
+							margin-right: 20rpx;
+						}
+					}
+				}	
+		    }
 		}
-
-	}
 	}
 	
 </style>
