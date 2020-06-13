@@ -1,12 +1,19 @@
 <template>
   <view>
       新闻页
+		
   </view>
 </template>
 
 <script>
-export default {
 
+export default {
+    data() {
+			return {
+				
+			}
+		},
+		
 }
 </script>
 

@@ -80,7 +80,7 @@ export default {
     return{
       title:"公共信息采集",
       path:"/pages/index/index"
-      // imageUrl：
+      // imageUrl： 
     }
   }
 }

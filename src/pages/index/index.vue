@@ -100,15 +100,21 @@
 			</navigator>
 		 </view>
 		</view>
+		<!-- 登录 -->
+		<denglu></denglu>
 	</view>
 </template>
 
 <script>
+import denglu from "@/components/ah-denglu/denglu.vue"
 	export default {
 		data() {
 			return {
 				
 			}
+		},
+		components:{
+			denglu
 		},
 		onLoad() {
 
