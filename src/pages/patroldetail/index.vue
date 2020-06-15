@@ -1,6 +1,6 @@
 <template>
   <view>
-    1
+      巡逻详情
   </view>
 </template>
 

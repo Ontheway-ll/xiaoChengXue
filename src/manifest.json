@@ -34,12 +34,18 @@
     },
 	/* 小程序特有相关 */
     "mp-weixin": {
-		"appid": "",
+		"appid": "wx76ed5122707a9c67",
 		"setting" : {
 			"urlCheck" : false
 		},
-		"usingComponents": true
-    },
+		"usingComponents": true,
+		"permission" : {
+			"scope.userLocation" : {
+				"desc" : "你的位置信息将用于你的上报和巡逻"
+			}
+		}
+	},
+	
 	"mp-alipay" : {
 	    "usingComponents" : false
 	},
