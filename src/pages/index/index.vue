@@ -135,7 +135,7 @@ import denglu from "@/components/ah-denglu/denglu.vue"
 		}
 	}
 </script>
-<style lang="less" scoped>
+<style lang="less" scoped> 
 	.title{
 		height: 250rpx;
 		width: 740rpx;

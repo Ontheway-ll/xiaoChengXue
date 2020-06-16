@@ -10,11 +10,11 @@
       <view class="line"></view>
       <!-- 上报位置location-filled -->
       <view class="map">
-        <text class="postion">上报位置</text>
-
+        <view class="postion">上报位置</view>
         <uni-icons @tap="position" class="icons" type="location-filled" size="20"></uni-icons>
-
-        <text class="dress">{{addresss}}</text>
+        <view v-if="adres" class="dress">{{adres}}</view>
+        <view v-else class="dress">{{addresss}}</view>
+        
       </view>
       <view class="line"></view>
       <!-- 上报时间 -->
@@ -27,7 +27,9 @@
       <!-- 上报内容 -->
       <view class="infocontent">
         <textarea
-          @input="myinput"
+         :value="bblur"
+          name="content"
+          @blur="myblur"
           style="width:700rpx; height:250rpx "
           maxlength="2000"
           placeholder="输入您想要填报的内容 说明:为了确保您的信息被采纳，请录入事发时间、地点、相关人员、时间内容、物品、群体、组织等信息。"
@@ -36,7 +38,7 @@
       <view class="line"></view>
       <!-- 图片视频和语音 -->
       <view class="tuShiyu">
-        <image src="../../static/imgs/ir_add_normal.png" mode />
+        <image @tap="myphoto" src="../../static/imgs/ir_add_normal.png" mode />
         <text class="wz">图片</text>
         <image src="../../static/imgs/ir_camera_normal.png" mode />
         <text class="wz">视频</text>
@@ -46,58 +48,17 @@
       <view class="lines"></view>
 
       <view class="father">
-        <view class="everyone">
-          <!-- 图片 -->
-          <image src="../../static/imgs/home_title.jpg" mode />
-          <view class="del">
-            <image src="../../static/imgs/delete_normal.png" mode />
+        <view v-for="(item,index) in photos" :key="index"  class="everyone">
+          <!-- 图片-->
+          <image @tap= "bigphoto(index)" :src="item" mode />
+          <view  @tap= "delphoto(index)"  class="del">
+            <image  src="../../static/imgs/delete_normal.png" mode />
           </view>
         </view>
-        <view class="everyone">
-          <!-- 图片 -->
-          <image src="../../static/imgs/home_title.jpg" mode />
-          <view class="del">
-            <image src="../../static/imgs/delete_normal.png" mode />
-          </view>
-        </view>
-        <view class="everyone">
-          <!-- 图片 -->
-          <image src="../../static/imgs/home_title.jpg" mode />
-          <view class="del">
-            <image src="../../static/imgs/delete_normal.png" mode />
-          </view>
-        </view>
-        <view class="everyone">
-          <!-- 图片 -->
-          <image src="../../static/imgs/home_title.jpg" mode />
-          <view class="del">
-            <image src="../../static/imgs/delete_normal.png" mode />
-          </view>
-        </view>
-        <view class="everyone">
-          <!-- 图片 -->
-          <image src="../../static/imgs/home_title.jpg" mode />
-          <view class="del">
-            <image src="../../static/imgs/delete_normal.png" mode />
-          </view>
-        </view>
-        <view class="everyone">
-          <!-- 图片 -->
-          <image src="../../static/imgs/home_title.jpg" mode />
-          <view class="del">
-            <image src="../../static/imgs/delete_normal.png" mode />
-          </view>
-        </view>
-        <view class="everyone">
-          <!-- 图片 -->
-          <image src="../../static/imgs/home_title.jpg" mode />
-          <view class="del">
-            <image src="../../static/imgs/delete_normal.png" mode />
-          </view>
-        </view>
+         
       </view>
       <!-- 提交按钮 -->
-      <button   class="btn" form-type="submit" hover-class="button-hover">提交</button>
+      <button   class="btn" form-type="submit" >提交</button>
     </view>
   </form>
  </view>
@@ -119,14 +80,18 @@ export default {
       },
       type: 0,
       addresss:"",
+      adres:'',
       // longitude: "", //经度
       // latitude: "" // 纬度
       time:'',
-      inputt:null
+      bblur:'',
+      photos:[],
+      
     };
   },
   components: { uniIcons },
   onLoad(options) {
+    this.getAuthorizeInfo();
     //  console.log(options);
     this.type = options.type;
     // this.getAuthorizeInfo();
@@ -134,35 +99,76 @@ export default {
     var time = util.formatTime(new Date())
     this.time=time
   },
-  methods: {
-    
+  methods: { 
     // 获取输入框内容
-    myinput(e){
+    myblur(e){
       // console.log(e.detail.value);
-      this.inputt = e.detail.value
-      console.log(inputt);
-      
+      this.bblur=e.detail.value
+      // console.log(this.bblur);
     },
     // 点击提交按钮
     formSubmit(e){
       // console.log(e);
-      // console.log(e.detail.value.textarea);
-      // var inputVla = e.detail.value.textarea
-      // console.log(inputVla);
-      // if (inputVla==""|| inputVla==undefined) {
-      //   uni.showToast({
-      //     title: '内容不能为空',
-      //     duration: 1000
-      //   })
-      //   return false
-      // }else {
-      //   uni.showToast({
-      //     title: '提交成功',
-      //     duration: 1000
-      //   })
-      //   this.inputt=""
-      // }
+      // console.log(e.detail.value.content);
+      var inputVla = e.detail.value.content
+      console.log( inputVla);
+      if (inputVla==""|| inputVla==undefined) {
+        uni.showToast({
+          title: '内容不能为空',
+          duration: 1000
+        })
+        return false
+      }
+       
+        uni.showToast({
+          title: '提交成功',
+          duration: 1000
+        })
+         
       
+      this.bblur=""
+      this.photos=""
+    },
+    // 点击图片获取相册信息
+    myphoto(){
+      // console.log(1);
+      uni.chooseImage({
+          count: 9,
+          sizeType: ['original', 'compressed'],
+          sourceType: ['album', 'camera'], //从相册或手机选择
+          success: (res) =>{
+            // console.log(res.tempFilePaths);
+            // console.log(JSON.stringify(res.tempFilePaths));
+            if (this.photos=='') {
+            this.photos = res.tempFilePaths
+            }else{
+              this.photos.push(res.tempFilePaths)
+            }
+          }
+      })
+    },
+    // 点击删除按钮
+    delphoto(index){
+      console.log(index);
+      uni.showModal({
+        title: '删除图片',
+        content: '确定要删除吗',
+        cancelText: '取消',
+				confirmText: '确定',
+        success: (res)=> {
+          if (res.confirm) {
+           this.photos.splice(index,1)
+          } else if (res.cancel) {
+            console.log('用户点击取消');
+          }
+        }
+      });
+    },
+    // 点击查看放大图片
+    bigphoto(index){
+      uni.previewImage({
+        urls:this.photos
+      });
     },
     getAuthorizeInfo() {
       const that = this;
@@ -237,15 +243,15 @@ export default {
           console.log(res);
           console.log("位置名称：" + res.name);
           console.log("详细地址：" + res.address);
-          console.log("纬度：" + res.latitude);
-          console.log("经度：" + res.longitude);
-          this.addresss = res.address;
+          // console.log("纬度：" + res.latitude);
+          // console.log("经度：" + res.longitude);
+          this.adres = res.address;
         }
       });
     },
 
     onShow() {
-    this.getAuthorizeInfo();
+    // this.getAuthorizeInfo();
       // 动态设置标题
       // uni.setNavigationBarTitle({
       //     title: this.$t('买金'),
@@ -256,48 +262,59 @@ export default {
 </script>
 
 <style lang="less" scoped>
+.inforeport{
 .words {
-  display: flex;
   height: 100rpx;
   .word {
-    margin-right: auto;
+    // margin-right: auto;
     line-height: 100rpx;
     color: #444444;
     margin-left: 20rpx;
   }
   .kong {
-    justify-content: flex-end;
+    // justify-content: flex-end;
     line-height: 100rpx;
     color: #444444;
-    margin-right: 20rpx;
+    // margin-right: 20rpx;
+    margin-left: 450rpx;
   }
 }
 // 一条线
 .line {
+  
   margin-left: 20rpx;
   margin-right: 20rpx;
   height: 1rpx;
   border-top: solid #999999 1px;
 }
 // 上报位置
-.map {
-  display: flex;
+.map {  
+  // display: flex;
   height: 100rpx;
   .postion {
-    margin-right: auto;
+    display: inline-block;
+    // margin-right: auto;
     line-height: 100rpx;
     color: #444444;
     margin-left: 20rpx;
+    width: 150rpx;
+    // margin-top: 30rpx;
+    
   }
   .icons {
+    width: 50rpx;
     margin-top: 28rpx;
-    margin-right: 20rpx;
+    margin-left: 60rpx;
   }
   .dress {
-    justify-content: flex-end;
+    // width: calc(100% - 200rpx);
+    overflow: hidden;
+    text-overflow:ellipsis;
+    white-space: nowrap;
     line-height: 100rpx;
     color: #444444;
-    margin-right: 20rpx;
+    margin-left: 270rpx;
+    margin-top: -100rpx;
   }
 }
 // 上报时间
@@ -314,7 +331,7 @@ export default {
     justify-content: flex-end;
     line-height: 100rpx;
     color: #444444;
-    margin-right: 20rpx;
+    margin-right: 140rpx;
   }
 }
 // 上报内容
@@ -375,5 +392,11 @@ export default {
 .btn {
   background-color: #1744ac;
   border-radius: 5rpx 5rpx 0 0;
+  width: 750rpx;
+  position: fixed;
+  bottom: 0rpx;
+
 }
+}
+
 </style>

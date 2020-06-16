@@ -12,7 +12,7 @@
     </view>
     <navigator url="/pages/historyreport/index"  hover-class="className">
           <uni-list> 
-          <uni-list-item title="历史上报"></uni-list-item>
+          <uni-list-item  title="历史上报"></uni-list-item>
         </uni-list>
     </navigator>
     <navigator url="/pages/task/index" open-type="switchTab" hover-class="className">
@@ -114,4 +114,5 @@ export default {
         }
       }
     }
+   
 </style>
