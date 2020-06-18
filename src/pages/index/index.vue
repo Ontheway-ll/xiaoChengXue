@@ -34,92 +34,52 @@
 		 </view>
 		</view>
 		<!-- 下面图片文字列表部分 -->
-		<view class="list">
-		 <view class="firstlist">
+		<view class="list" >
+		 <view @tap="infodetail" class="firstlist" v-for="item in lists" :key="item.id" >
 			 <view class="tupian">
-				 <image src="../../static/imgs/home_title.jpg"></image>
+				 <image :src="item.titleImg"></image>
 			 </view>
-			<navigator url="/pages/indexdetail/index">
+			<view class="nav">
 				 <view class="right">
 					<view class="top">
-						疫情防控，警惕！这个数字已经超过了500了！！！！
+						{{item.title}}
+					</view> 
+					<view class="contents">
+						{{item.content}}
 					</view> 
 					<view class="down">
-						<text class="lft">天津市公安局</text> 
-						<text class="rit">2020-05-25</text>
+						<text class="lft">{{item.deptName}}</text> 
+						<text class="rit">{{item.createDate}}</text>
 					</view> 
 				 </view>
-			</navigator>
+			</view>
 		 </view>
-		 <view class="firstlist">
-			 <view class="tupian">
-				 <image src="../../static/imgs/home_title.jpg"></image>
-			 </view>
-			<navigator url="/pages/indexdetail/index">
-				 <view class="right">
-					<view class="top">
-						疫情防控，警惕！这个数字已经超过了500了！！！！
-					</view> 
-					<view class="down">
-						<text class="lft">天津市公安局</text> 
-						<text class="rit">2020-05-25</text>
-					</view> 
-				 </view>
-			</navigator>
-		 </view>
-		 <view class="firstlist">
-			 <view class="tupian">
-				 <image src="../../static/imgs/home_title.jpg"></image>
-			 </view>
-			<navigator>
-				 <view class="right">
-					<view class="top">
-						疫情防控，警惕！这个数字已经超过了500了！！！！
-					</view> 
-					<view class="down">
-						<text class="lft">天津市公安局</text> 
-						<text class="rit">2020-05-25</text>
-					</view> 
-				 </view>
-			</navigator>
-		 </view>
-		 <view class="firstlist">
-			 <view class="tupian">
-				 <image src="../../static/imgs/home_title.jpg"></image>
-			 </view>
-			<navigator>
-				 <view class="right">
-					<view class="top">
-						疫情防控，警惕！这个数字已经超过了500了！！！！
-					</view> 
-					<view class="down">
-						<text class="lft">天津市公安局</text> 
-						<text class="rit">2020-05-25</text>
-					</view> 
-				 </view>
-			</navigator>
-		 </view>
+
+		 
 		</view>
+		
 		<!-- 登录 -->
 		<denglu></denglu>
 	</view>
 </template>
 
 <script>
-import denglu from "@/components/ah-denglu/denglu.vue"
+ import denglu from "@/components/ah-denglu/denglu.vue"
 	export default {
 		data() {
 			return {
-
+			 lists:[],//数据	
+			 size:10,//每页10条
+			 current:1,//当前第一页
 			}
 		},
 		components:{
 			denglu
 		},
 		methods: {
-			// 点击按钮跳转对应的页面
 			onsend(e){
-			console.log(e);
+			 // 点击按钮跳转对应的页面
+			 console.log(e);
 			 var type = e.currentTarget.dataset.type
 			 uni.navigateTo({
 				  url: '/pages/inforeport/index?type='+ type,
@@ -130,8 +90,45 @@ import denglu from "@/components/ah-denglu/denglu.vue"
 						console.log(res);
 					},
 					complete: function(res) {}  
+			    })
+			},
+			//   1 一进入页面需要加载请求回来的新闻列表，先定义一个数组，push
+            //   2  点击其中的一条进入到详细内容，需要注册点击事件
+			//   3  配置上拉加载，
+			// 点击图文进入详情，传参
+			async infodetail(e){
+				console.log(e);
+			 
+			},
+			// 进入主页获取新闻列表
+			async getArticles(){
+				let token = uni.getStorageSync('token')
+				let ress = await this.http({
+				 url:'/news/list',
+				 method:'POST',
+				 header:{'content-type': 'application/x-www-form-urlencoded',
+				 'Authorization': 'Bearer ' + token
+				 },
+				 data:{
+					 code:'ffxc',//xwdt（新闻动态）  ffxc(防范宣传)    tzgg(通知公告)
+					 size:this.size,//每页10条
+			         current:this.current//当前第一页
+				 }
 			 })
+				console.log('ress',ress.data.records);
+				this.lists=ress.data.records
 			}
+
+		},
+		onLoad(){
+			// var globalData = getApp().globalData.token
+            // console.log('globalData',globalData)  
+			this.getArticles()//加载新闻列表
+		},
+		onReachBottom(){
+			// console.log("上拉触底");
+			this.getArticles()//加载新闻列表
+			
 		}
 	}
 </script>
@@ -202,7 +199,7 @@ import denglu from "@/components/ah-denglu/denglu.vue"
 			background-color: #ffffff ;
 			display: flex;	
 			height: 200rpx;
-			margin-bottom: 20rpx;
+			margin-bottom: 40rpx;
 			.tupian{
 				flex: 1;
 				margin-right: 10rpx;
@@ -211,13 +208,19 @@ import denglu from "@/components/ah-denglu/denglu.vue"
 					height: 100%;
 				}
 			}
-		 	navigator{
+		 	.nav{
 				flex: 2;
 				.right{
+					position: relative;
 					height: 200rpx;
+					.contents{
+						font-size: 25rpx;
+					}
 					.down{
+						position: absolute;
 						margin-left: 40rpx;
-						margin-top: 80rpx;
+						top: 200rpx;
+						height: 20rpx;
 						color:#888888;
 						.lft{
 							margin-right: 20rpx;

@@ -1,6 +1,6 @@
 <template>
   <view>
-      我的商城
+     <web-view src="https://www.tmall.com/"></web-view>
   </view>
 </template>
 

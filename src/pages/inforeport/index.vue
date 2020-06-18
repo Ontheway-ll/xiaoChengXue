@@ -87,7 +87,7 @@ export default {
       bblur:'',
       photos:[],
       
-    };
+    }
   },
   components: { uniIcons },
   onLoad(options) {
@@ -119,10 +119,30 @@ export default {
         })
         return false
       }
-       
+        // 上传图片
+        let token = uni.getStorageSync('token')
+        var that = this
+        var fileList=[]
+        for (let i = 0; i < that.photos.length; i++) {
+          fileList.push({name:'file'+i,uri:that.photos[i]})
+        }
+        console.log(JSON.stringify(fileList));
+        
+        uni.uploadFile({
+          url: 'https://app.rl.jyxin.com/file/upload', //
+          files:fileList,
+          
+          header:{
+				      'content-type': 'application/x-www-form-urlencoded',
+				     'Authorization': 'Bearer ' + token
+          },
+          success: (uploadFileRes) => {
+            console.log(JSON.stringify(uploadFileRes));
+          }
+        });
         uni.showToast({
           title: '提交成功',
-          duration: 1000
+          duration: 2000
         })
          
       

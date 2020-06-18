@@ -20,14 +20,15 @@
                 <text class="kaishixl">开始巡逻</text>
               </view> -->
                <view class="xianshi">
-                 <view class="anniull">
-                  <text  class="kaishixll">开始巡逻</text>
+                 <view @tap="start" class="anniull">
+                  <text v-if="islook" class="kaishixll">开始巡逻</text>
+                  <text v-else class="kaishixll">巡逻中...</text>
                  </view>
                  <view @tap="changes" class="pause">
                    <text  class="continue" v-if="isShow">继续</text>
                    <text class="zanting" v-else >暂停</text>
                  </view>
-                 <view class="anniulr">
+                 <view @tap="endpatrol" class="anniulr">
                    <text class="jieshuxl">结束巡逻</text>
                  </view>
                </view>
@@ -55,24 +56,49 @@
 export default {
   data(){
     return{
-       id:0, // 使用 marker点击事件 需要填写id
+            id:0, // 使用 marker点击事件 需要填写id
             title: 'map',
             latitude: 39.114139,
             longitude: 117.101278,
             covers: [{
                 latitude: 39.114139,
                 longitude: 117.101278,
-                // iconPath: '../../../static/location.png'
             }],
-            isShow:false  
+            isShow:false, //默认显示  继续 
+            islook:true  // 默认显示开始巡逻
     }
   },
   methods:{
+        // 判断是继续还是暂停
       changes(){
         this.isShow = !this.isShow
         // console.log(this.isShow);
-        
+      },
+      // 判断是开始巡逻 还是 巡逻中
+      start(){
+        this.islook = !this.islook
+      },
+      // 结束巡逻，结束巡逻完成后显示开始巡逻 按钮
+      endpatrol(){
+
+        // this.islook=true
+      },
+  },
+  onLoad(){
+    uni.getLocation({
+      type: 'gcj02', //返回可以用于uni.openLocation的经纬度
+      success: function (res) {
+        const latitude = res.latitude;
+        const longitude = res.longitude;
+        uni.openLocation({
+          latitude: latitude,
+          longitude: longitude,
+          success: function () {
+            console.log(res);
+          }
+        });
       }
+    });
   }
 }
 </script>

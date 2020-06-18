@@ -12,20 +12,24 @@ app.$mount()
 Vue.prototype.http= async function (options) {
     uni.showLoading({
         title: '加载中...'
-    });
-
-    // 基本地址
-    let baseURL = "https://app.rl.jyxin.com"
+    });  
+    // 基本地址     
+    let baseURL = 'https://app.rl.jyxin.com'
     let res = await uni.request({
         // url:'https://app.rl.jyxin.com/user/login',
-        // method:'post'
+        // method:'POST',
+        // header:{
+        //     'content-type': 'application/x-www-form-urlencoded',
+        // },
+        // data:{
+        //     'loginType':'wechatAppLogin'
+        // }
         url:baseURL+options.url,
-        method:options.method?options.method:"get",
+        method:options.method?options.method:"GET",
         data:options.data?options.data:{},
         header:options.header?options.header:{}
     })
-    console.log(res);
-    
+    //    console.log(res);
         uni.hideLoading();
        return res[1].data
 }

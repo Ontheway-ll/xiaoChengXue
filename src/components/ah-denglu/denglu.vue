@@ -1,7 +1,7 @@
 <template>
 	<view>
 		<!-- 弹出层 -->
-		<view class="uni-banner" style="background:#FFFFFF;" v-if="bannerShow">
+		<view class="uni-banner" style="background:#FFFFFF;" v-if="bannerShow" >
 			<view style="justify-content:flex-end;">
 				<view style="justify-content:flex-end; text-align:right; " @tap="closeBanner">
 					<text class="uni-icon uni-icon-close"></text>
@@ -34,7 +34,11 @@
 	export default {
 		data() {
 			return {
-				bannerShow: false
+				bannerShow: false,
+				SESSION_KEY: '',
+                OpenId: '',
+                nickName: null,
+                avatar: null,
 			}
 		},
 		created() {
@@ -45,11 +49,11 @@
 				//检测当前用户登录态是否有效
 				var that = this
 				uni.checkSession({
-					success: function() {
+					success: function(res) {
 						that.bannerShow = false;
 					},
 					fail: function() {
-			// 同步移除本地缓存SESSION_KEY
+			         // 同步移除本地缓存SESSION_KEY
 						uni.removeStorageSync(SESSION_KEY);
 						that.bannerShow = true;
 					},
@@ -72,8 +76,8 @@
 				});
 			},
 			 async GetUserInfo(user){
-				var that = this;
 				console.log(user);
+				var that = this;
 				// 点击等会出现弹框，如果用户点击拒绝user.detail.errMsg=== "getUserInfo:fail auth deny
 				if (user.detail.errMsg==='getUserInfo:fail auth deny') {
 					uni.showToast({
@@ -83,69 +87,69 @@
 				}
 				// 如果用户点击的是允许
 				 let res = await uni.login()
-				 console.log(res);//res[1].code
-				 let loginRes= await  this.http({
-					 url:'/user/login',
-					 method:'post',
-					 data:{
-						 code:res[1].code,
-						 encryptedData:user.detail.encryptedData,
-						 iv:user.detail.iv,
-						 rawData:user.detail.rawData,
-						 signature:user.detail.signature
+				 console.log(res[1]);//res[1].code
+				 let sessRes=await uni.request({
+					 url: 'https://app.rl.jyxin.com/user/code2Session', //仅为示例，并非真实接口地址。
+					 data: {
+						 code: res[1].code
+					 },
+					 method:'POST',
+					 header: {
+						'content-type': 'application/x-www-form-urlencoded',
 					 }
-				 })
-				   console.log(loginRes);
-					// 存入token
-					// if (loginRes.meta.status===200) {
-					// 	uni.setStorageSync('token', loginRes.message.token)
-					// }
-					// 跳转回去
-					//  uni.navigateBack()
-			         that.bannerShow = false;
+				 });
+				 let sessObj=sessRes[1].data.data
+				 console.log('sessObj',sessObj)
+				 uni.setStorage('sessObj',sessObj);
+				//  {openid: "oUQLV5LVWA8VQa_YJssNjKAT_sog"   sessionKey: "rR6PK+er/4LNJm4B0fbCqg=="}
+
+				//  let loginRes = await uni.request({
+				// 		url:'https://app.rl.jyxin.com/user/login',
+				// 		method:'POST',
+				// 		header:{
+				// 			'content-type': 'application/x-www-form-urlencoded',
+				// 		},
+				// 		 data:{ 
+				// 		    sessionkey:sessObj.sessionKey,
+				// 		    loginType:'wechatAppLogin',
+				// 		    code:res[1].code,
+				// 		    encryptedData:user.detail.encryptedData,
+				// 			iv:user.detail.iv,
+				// 			//   rawData:user.detail.rawData,
+				// 			//   signature:user.detail.signature,
+				// 		} 
+						
+				//   })
+				let loginRes = await this.http({
+						url:'/user/login',
+						method:'POST',
+						header:{
+							'content-type': 'application/x-www-form-urlencoded',
+						},
+						data:{ 
+							sessionkey:sessObj.sessionKey,
+							loginType:'wechatAppLogin',
+							code:res[1].code,
+							encryptedData:user.detail.encryptedData,
+							iv:user.detail.iv,
+						   //   rawData:user.detail.rawData,
+						   //   signature:user.detail.signature,
+					    } 	
+			    })
+				        console.log("loginRes",loginRes);
+					   // 存入token
+					if (loginRes.code===200) {
+						uni.setStorageSync('token', loginRes.data.token)
+						// getApp().globalData.token = loginRes.data.token;//拿到后将token存入全局变量  以便其他页面使用  
+						// 跳转回去
+						 uni.navigateBack()
+						 that.bannerShow = false;
+					}
+					
 				
 			}
-			// 实现在微信小程序端的微信登录
-			// GetUserInfo(res) {
-			// 	console.log(res);
-			// 					// avatarUrl: "https://wx.qlogo.cn/mmopen/vi_32/DYAIOgq83eqUseKO3Aopp9I8r3htsDrY4a3Gj5piaNS5qJsC9r3YPkOPle9ha7VZAsLcgpFepCkGxibZ0977DiaFQ/132"
-			// 					// city: ""
-			// 					// country: "China"
-			// 					// gender: 1
-			// 					// language: "zh_CN"
-			// 					// nickName: "ABC时间跑去哪了！"
-			// 					// province: "Tianjin"
-			// 	var that = this;
-			// 	// 1 通过微信开发能力，获得微信用户的基本信息
-			// 	var userInfo = res.detail.userInfo;
-			// 	// 2 实现微信授权登录
-				 
-			// 	 uni.login({
-			// 		provider: "weixin",
-			// 		async success() {
-			// 		// 3 获得微信登录的code授权码，传递给后端，后端通过调用auth.code2Session 接口，换取用户唯一标识 OpenID 和 会话密钥 session_key
-			// 		var code = res.code;
-			// 		let res = await this.http({
-			// 			url: '/user/login',
-			// 			data: {
-			// 			"code": code,
-			// 			"avatarUrl": userInfo.avatarUrl,
-			// 			"nickName": userInfo.nickName
-			// 			},
-			// 			method: "POST"
-			// 			});
-			// 			console.log(res);
-			// 			var userInfo_wx = res.data.data;
-			// 			// 4 保存用户信息到全局的缓存中
-			// 			uni.setStorageSync("globalUser", userInfo_wx);
-			// 			that.bannerShow = false;
-			// 			// 5 切换页面跳转，使用tab切换的api
-			// 			uni.switchTab({
-			// 				url: '/pages/index/index'
-			// 			});
-			// 		}
-			// 	})
-			// }
+			
+			
 		}
 	}
 </script>

@@ -4,7 +4,9 @@
 			"path": "pages/index/index",
 			"style": {
 				"navigationBarTitleText": "公共信息采集",
-				"navigationBarBackgroundColor": "#224182"
+				"navigationBarBackgroundColor": "#224182",
+		        "onReachBottomDistance": 50
+
 			}
 		},
 		{
@@ -138,8 +140,7 @@
     "globalStyle": {
     	"navigationBarTextStyle": "#fff",
 		"navigationBarTitleText": "",
-		"backgroundColor": "#e2e2e2"
-		
+		"backgroundColor": "#e2e2e2"		
     },
     "tabBar": {
 		"color": "#666666",
