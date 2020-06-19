@@ -37,7 +37,7 @@
 		<view class="list" >
 		 <view @tap="infodetail" class="firstlist" v-for="item in lists" :key="item.id" >
 			 <view class="tupian">
-				 <image :src="item.titleImg"></image>
+				 <image :src=" 'https://app.rl.jyxin.com/'+ item.titleImg"></image>
 			 </view>
 			<view class="nav">
 				 <view class="right">
@@ -95,6 +95,8 @@
 			//   1 一进入页面需要加载请求回来的新闻列表，先定义一个数组，push
             //   2  点击其中的一条进入到详细内容，需要注册点击事件
 			//   3  配置上拉加载，
+
+			
 			// 点击图文进入详情，传参
 			async infodetail(e){
 				console.log(e);
@@ -105,7 +107,7 @@
 				let token = uni.getStorageSync('token')
 				let ress = await this.http({
 				 url:'/news/list',
-				 method:'POST',
+				 method:'POST',	
 				 header:{'content-type': 'application/x-www-form-urlencoded',
 				 'Authorization': 'Bearer ' + token
 				 },

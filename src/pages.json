@@ -27,7 +27,8 @@
 			"path": "pages/task/index",
 			"style": {
 				"navigationBarTitleText": "任务",
-				"navigationBarBackgroundColor": "#224182"
+				"navigationBarBackgroundColor": "#224182",
+		        "onReachBottomDistance": 50
 			}
 		},
 		{

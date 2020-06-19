@@ -64,9 +64,8 @@ export default {
             
         }  
     },
-    onLoad(){
-	//   this.getNews()  
-				console.log(token);
+    created(){
+	  this.getNews()  
 	
     }
 }
