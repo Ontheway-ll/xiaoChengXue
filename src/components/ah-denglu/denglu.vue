@@ -100,7 +100,8 @@
 				 });
 				 let sessObj=sessRes[1].data.data
 				 console.log('sessObj',sessObj)
-				 uni.setStorage('sessObj',sessObj);
+				 uni.setStorageSync('sessObj',sessObj);
+				//  uni.setStorageSync('userInfo',loginRes.data);
 				//  {openid: "oUQLV5LVWA8VQa_YJssNjKAT_sog"   sessionKey: "rR6PK+er/4LNJm4B0fbCqg=="}
 
 				//  let loginRes = await uni.request({
@@ -134,12 +135,13 @@
 							iv:user.detail.iv,
 						   //   rawData:user.detail.rawData,
 						   //   signature:user.detail.signature,
-					    } 	
+					    }  	
 			    })
 				        console.log("loginRes",loginRes);
 					   // 存入token
 					if (loginRes.code===200) {
 						uni.setStorageSync('token', loginRes.data.token)
+						
 						// getApp().globalData.token = loginRes.data.token;//拿到后将token存入全局变量  以便其他页面使用  
 						// 跳转回去
 						 uni.navigateBack()

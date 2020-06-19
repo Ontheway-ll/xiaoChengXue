@@ -59,7 +59,7 @@
 		</view>
 		
 		<!-- 登录 -->
-		<denglu></denglu>
+		<denglu v-if="showLogin"></denglu>
 	</view>
 </template>
 
@@ -71,6 +71,7 @@
 			 lists:[],//数据	
 			 size:10,//每页10条
 			 current:1,//当前第一页
+			 showLogin:false //ycang
 			}
 		},
 		components:{
@@ -98,7 +99,7 @@
 
 			
 			// 点击图文进入详情，传参
-			async infodetail(e){
+			 infodetail(e){
 				console.log(e);
 			 
 			},
@@ -109,7 +110,7 @@
 				 url:'/news/list',
 				 method:'POST',	
 				 header:{'content-type': 'application/x-www-form-urlencoded',
-				 'Authorization': 'Bearer ' + token
+				 	'Authorization': 'Bearer ' + token
 				 },
 				 data:{
 					 code:'ffxc',//xwdt（新闻动态）  ffxc(防范宣传)    tzgg(通知公告)
@@ -117,15 +118,31 @@
 			         current:this.current//当前第一页
 				 }
 			 })
-				console.log('ress',ress.data.records);
+				console.log('ress',ress);
 				this.lists=ress.data.records
 			}
 
 		},
 		onLoad(){
-			// var globalData = getApp().globalData.token
-            // console.log('globalData',globalData)  
-			this.getArticles()//加载新闻列表
+			// 进入就 判断 有没有授权登录
+			 	uni.getSetting({
+					success: data => {
+						console.log('授权登录',data)
+						if (data.authSetting['scope.userInfo']) { //如果授权登录过了
+							console.log('授权登录guo l   ',)
+							var userInfoStorage=uni.getStorageSync("userInfo") //那我直接去缓存中拿到userInfo的值
+							this.showLogin= false //控制页面条件绑定条件渲染 false就不展示登录按钮
+							// var globalData = getApp().globalData.token
+							// console.log('globalData',globalData)  
+							this.getToken()
+							this.getArticles()//加载新闻列表
+						} else {
+							this.showLogin=true  //控制页面条件绑定条件渲染 true  就展示登录按钮
+						}
+					}
+				})
+
+			
 		},
 		onReachBottom(){
 			// console.log("上拉触底");

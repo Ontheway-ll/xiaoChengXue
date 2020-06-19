@@ -1,14 +1,14 @@
 <template>
   <view class="box">
-      <view @tap="newsDetail" class="list">
-		 <view  class="firstlist">
+      <view  class="list">
+		 <view  class="firstlist" v-for="item in lists" :key="item.id" @tap="newsDetail(item.id)">
 			 <view class="tupian">
 				 <image src="../../static/imgs/home_title.jpg"></image>
 			 </view>
 			<view class="nav">
 				 <view class="right">
 					<view class="top">
-						疫情防控，警惕！这个数字已经超过了500了！！！！
+						{{item.title}}
 					</view> 
 					<view class="down">
 						<text class="lft">天津市公安局</text> 
@@ -38,30 +38,34 @@ export default {
     },
     methods:{
           // 获取新闻
-         getNews(){
+          async getNews(){
 				let token = uni.getStorageSync('token')
 				console.log(token);
 				
-        //    let result = await this.http({
-        //      url:'/news/list',
-        //      header:{
-		// 	   'content-type': 'application/x-www-form-urlencoded',
-		// 		 'Authorization': 'Bearer ' + token
-        //      },
-        //      method:'POST',
-        //      data:{
-        //          current:this.currentPage,
-        //          size:this.pgeSize,
-        //          code:this.code   // ffxc  
-        //      }  
-        //    })  
-		// 		console.log('result',result);
-							 
+           let result = await this.http({
+             url:'/news/list',
+             header:{
+			   'content-type': 'application/x-www-form-urlencoded',
+				 'Authorization': 'Bearer ' + token
+             },
+             method:'POST',
+             data:{
+                 current:this.currentPage,
+                 size:this.pgeSize,
+                 code:this.code   // ffxc  
+             }  
+           })  
+				console.log('result',result);
+				this.lists=result.data.records			 
         },
         // 点击某一条信息进入信息的详情
-        newsDetail(index){
-            console.log(index);
-            
+        newsDetail(id){
+			console.log('zxinwid',id);
+			//接收id  点击 跳转 去详情页面 并且 传过去id
+			// 在详情页面   onLoad里面 接收到  id   发送请求  去获新闻详情渲染页面
+            // uni.navigateTo({
+			// 	 url: '详情地址?id='+id
+			// });
         }  
     },
     created(){

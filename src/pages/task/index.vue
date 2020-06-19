@@ -12,14 +12,13 @@
        </view>
     </block>
 
-     <!-- <navigator url="/pages/taskdetail/index"  hover-class="className"> -->
+     
       <view class="list" @tap="OnTaskDetailTap" >
           <view class="num"><text class="ll">2</text></view>
          <text class="task">任务二</text>
          <text class="time">2020-06-10 11:22:33</text>
         <uni-icons class="icon" type="arrowright" size="25"></uni-icons>
        </view>
-        <!-- </navigator>  -->
 
         <!-- <navigator url="/pages/taskdetail/index"  hover-class="className">
       <view class="list">
@@ -93,21 +92,9 @@ export default {
           console.log('请求任务列表报错',res);
         }
      },
+    //  点击某一条信息进入详情
      OnTaskDetailTap(res) {
 				console.log("OnTaskDetailTap:", res);
-				let idx = res.currentTarget.id;//当前点击的某一项id 任务列表里
-				let id = this.taskdatas[idx].id;//任务列表数组里刚才点击的id
-				let title = this.taskdatas[idx].title;
-				uni.navigateTo({
-					url: `../taskdetail/taskdetail?id=${id}&&title=${title}`,
-					success: function(res) {
-						console.log(res);
-					},
-					fail: function(res) {
-						console.log(res);
-					},
-					complete: function(res) {}
-				});
 			}
   },
   created(){

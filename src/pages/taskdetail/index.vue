@@ -79,10 +79,13 @@
 export default {
   data() {
     return {};
-  }
+  },
   // components:{
   //   uniIcons
   // }
+   methods:{
+     
+   }
 };
 </script>
 
