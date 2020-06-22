@@ -1,6 +1,6 @@
 <template>
   <view>
-     <web-view src="https://www.tmall.com/"></web-view>
+     <web-view src=" http://mall.rl.jyxin.com "></web-view>
   </view>
 </template>
 

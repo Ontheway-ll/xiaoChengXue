@@ -52,6 +52,13 @@
 			}
 		},
 		{
+            "path": "pages/index/indexDetail",
+            "style": {
+				"navigationBarTitleText": "新闻内容",
+		        "onReachBottomDistance": 50
+			}
+		},
+		{
             "path": "pages/indexdetail/index",
             "style": {
 				

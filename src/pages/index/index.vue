@@ -35,9 +35,9 @@
 		</view>
 		<!-- 下面图片文字列表部分 -->
 		<view class="list" >
-		 <view @tap="infodetail" class="firstlist" v-for="item in lists" :key="item.id" >
+		 <view @tap="infodetail(item.id)" class="firstlist" v-for="item in lists" :key="item.id" >
 			 <view class="tupian">
-				 <image :src=" 'https://app.rl.jyxin.com/'+ item.titleImg"></image>
+				 <image :src=" 'http://file.rl.jyxin.com/'+ item.titleImg"></image>
 			 </view>
 			<view class="nav">
 				 <view class="right">
@@ -57,7 +57,7 @@
 
 		 
 		</view>
-		
+		<view class="end" v-if="isShow">没有更多了哦</view>
 		<!-- 登录 -->
 		<denglu v-if="showLogin"></denglu>
 	</view>
@@ -68,10 +68,12 @@
 	export default {
 		data() {
 			return {
+			 total:0,
 			 lists:[],//数据	
 			 size:10,//每页10条
 			 current:1,//当前第一页
-			 showLogin:false //ycang
+			 showLogin:false, //默认隐藏
+			 isShow:false//拉到底部默认隐藏	
 			}
 		},
 		components:{
@@ -88,7 +90,7 @@
 						// console.log(res);
 					},
 					fail: function(res) {
-						console.log(res);
+						console.log('主页点击按钮请求错误',res);
 					},
 					complete: function(res) {}  
 			    })
@@ -99,9 +101,11 @@
 
 			
 			// 点击图文进入详情，传参
-			 infodetail(e){
-				console.log(e);
-			 
+			 infodetail(id){
+				console.log('点击主页某一条信息',id);
+			 	uni.navigateTo({
+					  url: '/pages/index/indexDetail?id=' + id
+				 })
 			},
 			// 进入主页获取新闻列表
 			async getArticles(){
@@ -118,18 +122,21 @@
 			         current:this.current//当前第一页
 				 }
 			 })
-				console.log('ress',ress);
-				this.lists=ress.data.records
+				console.log('主页获取的新闻列表',ress);
+				this.lists=this.lists.concat(ress.data.records)
+				// 将总数保存起来
+                this.total = ress.data.total;
+
 			}
 
 		},
-		onLoad(){
+		created(){
 			// 进入就 判断 有没有授权登录
 			 	uni.getSetting({
 					success: data => {
 						console.log('授权登录',data)
 						if (data.authSetting['scope.userInfo']) { //如果授权登录过了
-							console.log('授权登录guo l   ',)
+							console.log('授权登录过了  ',)
 							var userInfoStorage=uni.getStorageSync("userInfo") //那我直接去缓存中拿到userInfo的值
 							this.showLogin= false //控制页面条件绑定条件渲染 false就不展示登录按钮
 							// var globalData = getApp().globalData.token
@@ -145,7 +152,12 @@
 			
 		},
 		onReachBottom(){
-			// console.log("上拉触底");
+			console.log("上拉触底");
+			if (this.lists.length===this.total) {
+				this.isShow=true
+				return
+			}
+			this.current++
 			this.getArticles()//加载新闻列表
 			
 		}
@@ -248,6 +260,11 @@
 				}	
 		    }
 		}
+	}
+	.end{
+		color: #cccccc;
+		text-align: center;
+		// margin-top: 10rpx;
 	}
 	
 </style>

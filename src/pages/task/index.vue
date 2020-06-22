@@ -13,12 +13,13 @@
     </block>
 
      
-      <view class="list" @tap="OnTaskDetailTap" >
+      <!-- <view class="list" @tap="OnTaskDetailTap" >
           <view class="num"><text class="ll">2</text></view>
          <text class="task">任务二</text>
          <text class="time">2020-06-10 11:22:33</text>
         <uni-icons class="icon" type="arrowright" size="25"></uni-icons>
-       </view>
+       </view> -->
+
 
         <!-- <navigator url="/pages/taskdetail/index"  hover-class="className">
       <view class="list">

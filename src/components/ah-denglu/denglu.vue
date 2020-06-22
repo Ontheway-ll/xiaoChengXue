@@ -43,7 +43,7 @@
 		},
 		created() {
 			// 同步获取本地缓存SESSION_KEY
-			var session = uni.getStorageSync(SESSION_KEY)
+			var session = uni.getStorageSync('SESSION_KEY')
 			//如果存在session，已经登陆
 			if (session) {
 				//检测当前用户登录态是否有效
@@ -54,7 +54,7 @@
 					},
 					fail: function() {
 			         // 同步移除本地缓存SESSION_KEY
-						uni.removeStorageSync(SESSION_KEY);
+						uni.removeStorageSync('SESSION_KEY');
 						that.bannerShow = true;
 					},
 				});
@@ -76,7 +76,7 @@
 				});
 			},
 			 async GetUserInfo(user){
-				console.log(user);
+				console.log('登录窗口getuserinfo',user);
 				var that = this;
 				// 点击等会出现弹框，如果用户点击拒绝user.detail.errMsg=== "getUserInfo:fail auth deny
 				if (user.detail.errMsg==='getUserInfo:fail auth deny') {
@@ -87,7 +87,7 @@
 				}
 				// 如果用户点击的是允许
 				 let res = await uni.login()
-				 console.log(res[1]);//res[1].code
+				 console.log('登录窗口login获取的code',res[1]);//res[1].code
 				 let sessRes=await uni.request({
 					 url: 'https://app.rl.jyxin.com/user/code2Session', //仅为示例，并非真实接口地址。
 					 data: {
@@ -99,8 +99,10 @@
 					 }
 				 });
 				 let sessObj=sessRes[1].data.data
-				 console.log('sessObj',sessObj)
+				 let SESSION_KEY =sessRes[1].data.data.sessionKey
+				 console.log('登录窗口获取的sessionkey和openid',sessObj)
 				 uni.setStorageSync('sessObj',sessObj);
+				 uni.setStorageSync('SESSION_KEY', SESSION_KEY )
 				//  uni.setStorageSync('userInfo',loginRes.data);
 				//  {openid: "oUQLV5LVWA8VQa_YJssNjKAT_sog"   sessionKey: "rR6PK+er/4LNJm4B0fbCqg=="}
 
@@ -137,7 +139,7 @@
 						   //   signature:user.detail.signature,
 					    }  	
 			    })
-				        console.log("loginRes",loginRes);
+				        console.log("登录窗口发请求login获取token",loginRes);
 					   // 存入token
 					if (loginRes.code===200) {
 						uni.setStorageSync('token', loginRes.data.token)

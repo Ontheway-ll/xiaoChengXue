@@ -4,11 +4,11 @@ import App from './App'
 Vue.config.productionTip = false
 App.mpType = 'app'
 
-Vue.prototype.getToken=async function(){
+Vue.prototype.getToken=async function(){ 
     let userinfo=await uni.getUserInfo()
         let coderes = await uni.login()
 
-        console.log('userinfo111',userinfo);//coderes[1].code
+        console.log('gettoken方法请求的userinfo',userinfo);//coderes[1].code
         let user=userinfo[1]
         let sessRes=await uni.request({
             url: 'https://app.rl.jyxin.com/user/code2Session', //仅为示例，并非真实接口地址。
@@ -21,7 +21,7 @@ Vue.prototype.getToken=async function(){
             }
         });
         let sessObj=sessRes[1].data.data
-        console.log('sessObj111',sessObj)
+        console.log('code2session获取的sessionkey和openID',sessObj)
         let loginRes =await uni.request({
             url:'https://app.rl.jyxin.com/user/login',
             method:'POST',
@@ -38,7 +38,7 @@ Vue.prototype.getToken=async function(){
                //   signature:user.detail.signature,
             }  	
         })
-            console.log("loginRes111",loginRes[1].data);
+            console.log("真正登录loginres获取的token",loginRes[1].data);
            // 存入token
         if (loginRes[1].data.code===200) {
             uni.setStorageSync('token', loginRes[1].data.data.token)
@@ -46,10 +46,14 @@ Vue.prototype.getToken=async function(){
             
         }
 }
+
 // 在mainjs封装request请求，http函数，所有的组件都可以通过this.http()调用
-Vue.prototype.http= async function (options) {
+    Vue.prototype.http= async function (options) {
     uni.showLoading({
-        title: '加载中...'
+        title: '加载中...',
+        mask:true
+        
+        
     });  
     // 基本地址     
     let baseURL = 'https://app.rl.jyxin.com'
@@ -69,7 +73,7 @@ Vue.prototype.http= async function (options) {
     })
     //    console.log(res);
     if(res[1].data.code!=200){
-        console.log('请求错误----',res[1].data)
+        console.log('封装请求不等200错误----',res[1].data)
         await this.getToken()
         let token = uni.getStorageSync('token')
         res = await uni.request({
@@ -81,7 +85,7 @@ Vue.prototype.http= async function (options) {
                 'Authorization': 'Bearer ' + token
             }
         })
-        console.log('res11111',res)
+        console.log('main封装http请求结果',res)
 
     }
 
