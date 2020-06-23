@@ -43,7 +43,7 @@ export default {
           // 获取新闻
           async getNews(){
 				let token = uni.getStorageSync('token')
-				console.log(token);
+				// console.log(token);
 				
            let result = await this.http({
              url:'/news/list',

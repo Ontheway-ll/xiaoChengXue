@@ -1,15 +1,29 @@
 <template>
   <view>
       <view class="imgs">
-        <image src="../../static/imgs/task_icon_nodata.png"></image>
+        <image class="img" src="../../static/imgs/task_icon_nodata.png"></image>
         <view class="wu"><text class="bao">暂无上报</text></view>
       </view>
+      
+      
   </view>
 </template>
 
 <script>
 export default {
+      data(){
+        return{
 
+        }
+      },
+      methods:{
+        getHistoryReport(){
+
+        }
+      },
+      onLoad(){
+         this.getHistoryReport()
+      }
 }
 </script>
 
@@ -18,7 +32,7 @@ export default {
     display: flex;
     align-items: center;
     justify-content: center;
-    image{
+    .img{
      height: 200rpx;
      width: 200rpx;
      margin-top: 400rpx;
