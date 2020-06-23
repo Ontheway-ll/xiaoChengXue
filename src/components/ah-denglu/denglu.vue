@@ -20,8 +20,8 @@
 				    <button class="mini-btnn"  size="mini">取消</button>
 				</view>
 			</view>
-			<view style="padding:50upx 0; padding-bottom:68upx; ">
-				<button type='primary' open-type="getUserInfo" @getuserinfo="GetUserInfo" style="background:#1aad19;  margin:0 80upx; border-radius: 60rpx;">微信登录</button>
+			<view style="padding:50rpx 0; padding-bottom:68rpx; ">
+				<button type='primary' open-type="getUserInfo" @getuserinfo="GetUserInfo" style="background:#1aad19;  margin:0 80rpx; border-radius: 60rpx;">微信登录</button>
 			</view>
 		</view>
 		<view class="uni-mask" v-if="bannerShow"></view> 
@@ -177,7 +177,7 @@
 		left: 50%;
 		top: 50%;
 		background: #FFF;
-		border-radius: 10upx;
+		border-radius: 10rpx;
 		z-index: 9999;
 		transform: translate(-50%, -50%);
 	}

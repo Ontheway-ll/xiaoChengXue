@@ -1,12 +1,11 @@
 {
-	"pages": [ //pages数组中第一项表示应用启动页,
+	"pages": [ 
         {
 			"path": "pages/index/index",
 			"style": {
 				"navigationBarTitleText": "公共信息采集",
 				"navigationBarBackgroundColor": "#224182",
 		        "onReachBottomDistance": 50
-
 			}
 		},
 		{
@@ -15,7 +14,7 @@
 				"navigationBarTitleText": "新闻",
 				"navigationBarBackgroundColor": "#224182"
 			}
-		},
+		}, 
 		{
 			"path": "pages/patrol/index",
 			"style": {
@@ -56,12 +55,6 @@
             "style": {
 				"navigationBarTitleText": "新闻内容",
 		        "onReachBottomDistance": 50
-			}
-		},
-		{
-            "path": "pages/indexdetail/index",
-            "style": {
-				
 			}
 		},
 		{
@@ -142,11 +135,9 @@
 			}
 		}
 		
-		
-		
     ],
     "globalStyle": {
-    	"navigationBarTextStyle": "#fff",
+    	"navigationBarTextStyle": "#fff", 
 		"navigationBarTitleText": "",
 		"backgroundColor": "#e2e2e2"		
     },

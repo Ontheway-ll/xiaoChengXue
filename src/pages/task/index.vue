@@ -4,7 +4,7 @@
       <view :data-idx="index" 
              @tap="OnTaskDetailTap"
              class="list">
-          <view class="num"><text class="ll">{{item.index}}</text></view>
+          <view class="num"><text class="ll">{{index}}</text></view>
          <text class="task">{{item.title}}</text>
          <!-- <text class="time">{{util.formatDate(item.startTime)}}</text> -->
          <text class="time">{{item.startTime}}</text>
@@ -12,52 +12,39 @@
        </view>
     </block>
 
-     
-      <!-- <view class="list" @tap="OnTaskDetailTap" >
-          <view class="num"><text class="ll">2</text></view>
-         <text class="task">任务二</text>
-         <text class="time">2020-06-10 11:22:33</text>
-        <uni-icons class="icon" type="arrowright" size="25"></uni-icons>
-       </view> -->
-
-
-        <!-- <navigator url="/pages/taskdetail/index"  hover-class="className">
-      <view class="list">
-          <view class="num"><text class="ll">3</text></view>
-         <text class="task">任务三</text>
-         <text class="time">2020-06-10 11:22:33</text>
-        <uni-icons class="icon" type="arrowright" size="25"></uni-icons>
-       </view>
-        </navigator> -->
-
+      <view v-if="isShow" class="imgs">
+        <image class="img" src="../../static/imgs/task_icon_nodata.png"></image>
+        <!-- <view class="wu"><text class="bao">暂无上报</text></view> -->
+      </view>
         <!-- <button @click="open">打开弹窗</button>
         <uni-popup ref="popup" type="center">加载中...</uni-popup> -->
-         
   </view>
 </template>
 
 <script>
-//  const { formatDate }  = require('../../utils/time')
-import uniIcons from "@/components/uni-icons/uni-icons.vue"
-import uniPopup from '@/components/uni-popup/uni-popup.vue'
-import uniPopupMessage from '@/components/uni-popup/uni-popup-message.vue'
-import uniPopupDialog from '@/components/uni-popup/uni-popup-dialog.vue'
-export default {
-  data(){
+    //  const { formatDate }  = require('../../utils/time')
+    import uniIcons from "@/components/uni-icons/uni-icons.vue"
+    // import uniPopup from '@/components/uni-popup/uni-popup.vue'
+    // import uniPopupMessage from '@/components/uni-popup/uni-popup-message.vue'
+    // import uniPopupDialog from '@/components/uni-popup/uni-popup-dialog.vue'
+    export default {
+   data(){
     return{
       	pages: 0,//总共多少页
         pageNum:1,//第一页
         pageSize:10,//每页10条
         taskdatas:[],//任务列表
         nonedata: false,
-				moredata: false
+        moredata: falsel,
+          isShow:false,//图片默认隐藏
     }
   },
   components: {
-        uniIcons,
-        uniPopup,
-        uniPopupMessage,
-        uniPopupDialog},
+        uniIcons
+        // uniPopup,
+        // uniPopupMessage,
+        // uniPopupDialog},
+    },
   methods:{
     // 弹层
     // open(){
@@ -79,8 +66,12 @@ export default {
           }
         })
            console.log("请求任务列表成功",res.data);
+        //  判断下请求回来的内容是否为空，如果为空显示 “暂无上报” 图片
+           if (ress.data.records.length==0) {
+            this.isShow=true
+            return
+         }
         if (res.code===200) {
-        
           let curListData = this.taskdatas.concat(res.data.records);
           if (this.pageNum === res.data.pages) {
           this.taskdatas = curListData;
@@ -112,18 +103,22 @@ export default {
 			}
   }
 }
-</script>
-
+  </script>
 <style lang="less" scoped>
 .color{
   background-color: #f5f6fa; 
+  .img{
+     height: 200rpx;
+     width: 200rpx;
+     margin-top: 400rpx;
+    }
   .banner {
 		width: 80%;
 		position: fixed;
 		left: 50%;
 		top: 50%;
 		background: red;
-		border-radius: 10upx;
+		border-radius: 10rpx;
 		z-index: 9999;
 		transform: translate(-50%, -50%);
 	}

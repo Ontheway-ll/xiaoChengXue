@@ -58,24 +58,7 @@ export default {
     };
   },
   methods: {
-    dateToString: function(date) {
-				var year = date.getFullYear();
-				var month = (date.getMonth() + 1).toString();
-				var day = (date.getDate()).toString();
-
-				if (month.length == 1) {
-					month = "0" + month;
-				}
-				if (day.length == 1) {
-					day = "0" + day;
-				}
-
-				var dateTime = year + month + day;
-				return dateTime;
-      },
-      
     async getList() {
-      				let signDate = this.dateToString(new Date());
       let token = uni.getStorageSync("token");
       // console.log('签到请求获取token',token);
       let res = await this.http({
@@ -89,7 +72,7 @@ export default {
           signDate: this.signDate
         }
       });
-      console.log("请求签到结果", res);
+      console.log("请求签到结果", res.data);
       // this.signDate =res.data.signDate
       // this.info.selected = res.data
       // this.info.selected.push({
