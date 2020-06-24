@@ -53,18 +53,49 @@ export default {
         insert: true, //插入模式
         selected: [] //签到数据
       },
-      signDate: "",
-      nowDate: ""
+       signDate: null,//当天日期
+       nowDate: ""//当前年月
     };
   },
   methods: {
-    async getList() {
+       // 封装当前年月日
+    dateToString: function(date) {
+				var year = date.getFullYear();
+				var month = (date.getMonth() + 1).toString();
+				var day = (date.getDate()).toString();
+
+				if (month.length == 1) {
+					month = "0" + month;
+				}
+				if (day.length == 1) {
+					day = "0" + day;
+				}
+
+				var dateTime = year + month + day;
+				return dateTime;
+      },
+        //  封装当前年月
+      dateToMonth: function(date) {
+				var year = date.getFullYear();
+				var month = (date.getMonth() + 1).toString();
+
+				if (month.length == 1) {
+					month = "0" + month;
+				}
+
+				var dateTime = year + month;
+				return dateTime;
+			},
+   async getList() {
       let token = uni.getStorageSync("token");
       // console.log('签到请求获取token',token);
+               let signDate = this.dateToString(new Date());
+               this.signDate=signDate
+               
       let res = await this.http({
         url: "/sign/doSign",
         header: {
-          "content-type": 'application/json',
+          "content-type": 'application/x-www-form-urlencoded',
           Authorization: "Bearer " + token
         },
         method: "POST",
@@ -73,6 +104,7 @@ export default {
         }
       });
       console.log("请求签到结果", res.data);
+      // this.signDate = res.data.signDate
       // this.signDate =res.data.signDate
       // this.info.selected = res.data
       // this.info.selected.push({
@@ -86,37 +118,41 @@ export default {
     async getSign() {
       let token = uni.getStorageSync("token");
       // console.log('签到请求获取token',token);
+               let signDate = this.dateToString(new Date());
+               this.signDate=signDate 
+               let nowDate = this.dateToMonth(new Date())
+               this.nowDate=nowDate
       let res = await this.http({
         url: "/sign/list",
         header: {
-          "content-type": "application/json",
+          "content-type": "application/x-www-form-urlencoded",
           Authorization: "Bearer " + token
         },
         method: "POST",
         data: {
-          nowDate: this.nowDate,
-          signDate: this.signDate
+          nowDate: this.nowDate,//当前年月
+          signDate: this.signDate//当天 日期
         }
       });
       console.log("请求签到历史记录", res.data);
-      // this.info.selected = res.data.signDetails; //  res.data.signDetails
+      this.info.selected = res.data.signDetails.signDetails; //  res.data.signDetails
       // 格式要一致  如果不一致 就自己循环数组 重新弄个数组
-         let arr=[]
+      //    let arr=[]
 
-       this.info.selected = [
-        {
-          date: getDate(new Date(), -3).fullDate,
-          info: "已签到"
-        },
-        {
-          date: getDate(new Date(), -2).fullDate, // '2020-06-22'
-          info: "已签到"
-        },
-        {
-          date: getDate(new Date(), -1).fullDate,
-          info: "已签到"
-        }
-      ];
+      //  this.info.selected = [
+      //   {
+      //     date: getDate(new Date(), -3).fullDate,
+      //     info: "已签到"
+      //   },
+      //   {
+      //     date: getDate(new Date(), -2).fullDate, // '2020-06-22'
+      //     info: "已签到"
+      //   },
+      //   {
+      //     date: getDate(new Date(), -1).fullDate,
+      //     info: "已签到"
+      //   }
+      // ];
     },
     change(e) {
       console.log("日期改变事件", e);

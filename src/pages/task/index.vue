@@ -12,10 +12,12 @@
        </view>
     </block>
 
-      <view v-if="isShow" class="imgs">
+        <view v-if="isShow" class="bigbox">
+          <view  class="imgs">
         <image class="img" src="../../static/imgs/task_icon_nodata.png"></image>
-        <!-- <view class="wu"><text class="bao">暂无上报</text></view> -->
+        <!-- <view class="wu"><text class="bao">暂无任务</text></view> -->
       </view>
+        </view>
         <!-- <button @click="open">打开弹窗</button>
         <uni-popup ref="popup" type="center">加载中...</uni-popup> -->
   </view>
@@ -35,7 +37,7 @@
         pageSize:10,//每页10条
         taskdatas:[],//任务列表
         nonedata: false,
-        moredata: falsel,
+        moredata: false,
           isShow:false,//图片默认隐藏
     }
   },
@@ -66,13 +68,14 @@
           }
         })
            console.log("请求任务列表成功",res.data);
-        //  判断下请求回来的内容是否为空，如果为空显示 “暂无上报” 图片
-           if (ress.data.records.length==0) {
+        
+        if (res.code===200) {
+          let curListData = this.taskdatas.concat(res.data.records);
+            //  判断下请求回来的内容是否为空，如果为空显示 “暂无上报” 图片
+           if (this.taskdatas.length==0) {
             this.isShow=true
             return
          }
-        if (res.code===200) {
-          let curListData = this.taskdatas.concat(res.data.records);
           if (this.pageNum === res.data.pages) {
           this.taskdatas = curListData;
             this.pages = res.data.pages;
@@ -107,11 +110,21 @@
 <style lang="less" scoped>
 .color{
   background-color: #f5f6fa; 
-  .img{
-     height: 200rpx;
-     width: 200rpx;
-     margin-top: 400rpx;
-    }
+  .bigbox{
+    background-color: #ffffff;
+    .imgs{
+     margin-top: 410rpx;
+     margin-left: 217rpx;
+     height: 300rpx;
+     width: 300rpx;
+     .img{
+       width: 100%;
+       height: 100%;
+        border-radius: 50%;
+      }
+   }
+  }
+   
   .banner {
 		width: 80%;
 		position: fixed;

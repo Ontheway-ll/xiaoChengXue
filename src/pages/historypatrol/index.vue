@@ -1,41 +1,14 @@
 <template>
   <view class="color">
-    <navigator url="/pages/patroldetail/index"  hover-class="className">
-      <view class="list">
-          <view class="num"><text class="ll">1</text></view>
-          <view class="time">2020-06-10 11:22:33</view>
-          <view class="detail"><text class="km">里程:10.10km</text><text class="min">时长:100min</text></view>
+    
+      <view @tap="getPartolDetail(item.id)" class="list" v-for="(item,index) in lists" :key="item.id" >
+          <view class="num"><text class="ll">{{index+1}}</text></view>
+          <view class="time">{{item.createDate}}</view>
+          <view class="detail"><text class="km">里程:{{item.mileage}}km</text><text class="min">时长:{{item.timeLength}}min</text></view>
         <uni-icons class="icon" type="arrowright" size="25"></uni-icons>
        </view>
-    </navigator>
-        
-        <navigator url="/pages/patroldetail/index"  hover-class="className">
-      <view class="list">
-          <view class="num"><text class="ll">2</text></view>
-          <view class="time">2020-06-10 11:22:33</view>
-          <view class="detail"><text class="km">里程:10.10km</text><text class="min">时长:100min</text></view>
-        <uni-icons class="icon" type="arrowright" size="25"></uni-icons>
-       </view>
-    </navigator>
-
-    <navigator url="/pages/patroldetail/index"  hover-class="className">
-      <view class="list">
-          <view class="num"><text class="ll">3</text></view>
-          <view class="time">2020-06-10 11:22:33</view>
-          <view class="detail"><text class="km">里程:10.10km</text><text class="min">时长:100min</text></view>
-        <uni-icons class="icon" type="arrowright" size="25"></uni-icons>
-       </view>
-    </navigator>
-
-    <navigator url="/pages/patroldetail/index"  hover-class="className">
-      <view class="list">
-          <view class="num"><text class="ll">4</text></view>
-          <view class="time">2020-06-10 11:22:33</view>
-          <view class="detail"><text class="km">里程:10.10km</text><text class="min">时长:100min</text></view>
-        <uni-icons class="icon" type="arrowright" size="25"></uni-icons>
-       </view>
-    </navigator>
-       
+		<view class="end" v-if="isShow">没有更多了哦</view>
+      
   </view>
 </template>
 
@@ -44,16 +17,66 @@ import uniIcons from "@/components/uni-icons/uni-icons.vue"
 export default {
   data(){
     return{
-
+          current:1,//当前页码
+          size:10,//每页条数
+          total:0,
+          lists:[],
+          isShow:false
     }
   },
-    components: {uniIcons}
+  methods:{
+        // 一进入页面请求历史巡逻接口
+      async historypartol(){
+				let token = uni.getStorageSync('token')
+				let ress = await this.http({
+				 url:'/taskReceiverLine/list',
+				 method:'POST',	
+				 header:{'content-type': 'application/x-www-form-urlencoded',
+				 	'Authorization': 'Bearer ' + token
+				 },
+				 data:{
+					 current:this.current,//
+					 size:this.size,//每页10条
+				 }
+			  })
+				console.log('我的历史巡逻请求列表',ress);
+				this.lists=this.lists.concat(ress.data.records)
+				// 将总数保存起来
+        this.total = ress.data.total;
+      },
+            // 点击其中一条进入巡逻详情
+            getPartolDetail(id){
+              console.log('点击历史巡逻进入详情',id);
+              uni.navigateTo({
+                url: '/pages/patroldetail/index?id=' + id
+            })
+            },
+  },
+     onLoad(){
+        this.historypartol()
+     },
+    components: { uniIcons },
+    onReachBottom(){
+			console.log("上拉触底");
+			if (this.lists.length===this.total) {
+				this.isShow=true
+				return
+			}
+			this.current++
+			this.historypartol()//加载
+			
+		}
 }
-</script>
+ </script>
 
 <style lang="less" scoped>
 .color{
   background-color: #f5f6fa; 
+  .end{
+    color: #cccccc;
+		text-align: center;
+		// margin-top: 10rpx;
+  }
  .list{
    position: relative;
     margin-top: 30rpx;

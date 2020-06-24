@@ -110,7 +110,8 @@
             "path": "pages/historypatrol/index",
             "style": {
 				"navigationBarTitleText": "历史巡逻",
-				"navigationBarBackgroundColor": "#224182"
+				"navigationBarBackgroundColor": "#224182",
+		        "onReachBottomDistance": 50
 			}
 		},
 		{

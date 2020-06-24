@@ -4,7 +4,7 @@
      <view class="biglist"  v-for="(item,index) in lists" :key="item.id" >
          <view class="list">
           <view class="num">
-            <text class="ll">{{index}}</text>
+            <text class="ll">{{index+1}}</text>
           </view>
           <view class="minbox">
               <view class="task">主题:
@@ -56,12 +56,12 @@ export default {
 				 }
 			 })
         console.log('获取历史上报',ress.data);
+        this.lists=this.lists.concat(ress.data.records)
         //  判断下请求回来的内容是否为空，如果为空显示 “暂无上报” 图片
-         if (ress.data.records.length==0) {
+         if (this.lists.length==0) {
             this.isShow=true
             return
          }
-				this.lists=this.lists.concat(ress.data.records)
 				// 将总数保存起来
         this.total = ress.data.total;
 			}

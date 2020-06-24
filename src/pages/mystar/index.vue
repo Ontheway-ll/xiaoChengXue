@@ -25,9 +25,39 @@
 export default {
   data(){
     return{
-
+            lists:[],//新闻列表
+			      total:0,
+            currentPage:1,//
+            pgeSize:10,//每页条数
     }
   },
+  methods:{
+     async myStar(){
+				let token = uni.getStorageSync('token')
+				// console.log(token);
+           let result = await this.http({
+             url:'/score/list',
+             header:{
+			   'content-type': 'application/json',
+				 'Authorization': 'Bearer ' + token
+             },
+             method:'POST',
+             data:{
+                 current:this.currentPage,
+                 size:this.pgeSize,
+                 
+             }  
+           })  
+				   console.log('获取积分记录',result);
+				// this.lists=this.lists.concat(result.data.records)
+				// 将总数保存起来
+                // this.total = result.data.total;		 
+        },
+    
+  },
+  onLoad(){
+    this.myStar()
+  }
     
 }
 </script>
